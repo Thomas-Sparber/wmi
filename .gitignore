@@ -1,4 +1,7 @@
 *.o
 *.d
 *.dll
-*.exe
+*.exe.
+bin
+build
+.vscode/
