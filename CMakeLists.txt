@@ -14,4 +14,4 @@ add_library(diaa_sami_comsupp STATIC ${PROJECT_SOURCE_DIR}/diaa_sami_comsupp/dia
 add_executable(test_wmi ${PROJECT_SOURCE_DIR}/src/test.cpp)
 
 target_link_libraries(wmi ole32 oleaut32 wbemuuid )
-target_link_libraries(test_wmi wmi ole32 oleaut32 wbemuuid diaa_sami_comsupp)
+target_link_libraries(test_wmi wmi ole32 oleaut32 wbemuuid)
