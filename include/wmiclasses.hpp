@@ -15,7 +15,43 @@
 
 namespace Wmi
 {
+struct Win32_ComputerSystemProduct
+{
 
+ Win32_ComputerSystemProduct():
+	Caption(),
+	Description(),
+	IdentifyingNumber(),
+	Name(),
+	UUID(),
+	Vendor(),
+	Version()
+	{ }
+void setProperties(const WmiResult &result, std::size_t index){
+
+	result.extract(index,"Caption",(*this).Caption);
+		result.extract(index,"Description",(*this).Description);
+			result.extract(index,"IdentifyingNumber",(*this).IdentifyingNumber);
+				result.extract(index,"Name",(*this).Name);
+				result.extract(index,"UUID",(*this).UUID);
+				result.extract(index,"Vendor",(*this).Vendor);
+				result.extract(index,"Version",(*this).Version);
+
+}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_ComputerSystemProduct";
+	}
+
+	std::string Caption;
+	std::string Description;
+	std::string IdentifyingNumber;
+	std::string Name;
+	std::string UUID;
+    std::string Vendor;
+    std::string Version;
+};
 struct Win32_ComputerSystem
 {
 

@@ -22,12 +22,15 @@ int main(int /*argc*/, char */*args*/[])
 {
 	try {
 		Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
-		cout<<"Computername: "<<computer.Name<<"."<<computer.Domain<<endl;
+		Win32_ComputerSystemProduct product  = retrieveWmi<Win32_ComputerSystemProduct>();
+
+		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
+		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
 		cout<<endl;
 		cout<<"Installed services:"<<endl;
 		for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())
 		{
-			cout<<service.Caption<<endl;
+			cout<<service.Caption<<" started:"<<service.Started<<" state:"<<service.State<<  endl;
 		}
 	} catch (const WmiException &ex) {
 		cerr<<"Wmi error: "<<ex.errorMessage<<", Code: "<<ex.hexErrorCode()<<endl;
