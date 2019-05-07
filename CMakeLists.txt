@@ -9,7 +9,7 @@ set(WMISOURCES ${PROJECT_SOURCE_DIR}/src/wmi.cpp  ${PROJECT_SOURCE_DIR}/src/wmir
 include_directories(${TOTAL_INCLUDES}  ${PROJECT_SOURCE_DIR}/include)
 
 
-add_library(wmi SHARED  ${WMISOURCES})
+add_library(wmi STATIC  ${WMISOURCES})
 add_library(diaa_sami_comsupp STATIC ${PROJECT_SOURCE_DIR}/diaa_sami_comsupp/diaa_sami_comsupp.cpp)
 add_executable(test_wmi ${PROJECT_SOURCE_DIR}/src/test.cpp)
 
