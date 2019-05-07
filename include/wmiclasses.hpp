@@ -471,7 +471,132 @@ struct Win32_SerialPort
 	std::string TimeOfLastReset;
 
 }; //end Win32_SerialPort
+struct SoftwareLicensingService{
 
+	SoftwareLicensingService():
+	ClientMachineID(),
+	DiscoveredKeyManagementServiceMachineIpAddress(),
+	DiscoveredKeyManagementServiceMachineName(),
+	DiscoveredKeyManagementServiceMachinePort(),
+	IsKeyManagementServiceMachine(),
+	KeyManagementServiceCurrentCount(),
+	KeyManagementServiceDnsPublishing(),
+	KeyManagementServiceFailedRequests(),
+	KeyManagementServiceHostCaching(),
+	KeyManagementServiceLicensedRequests(),
+	KeyManagementServiceListeningPort(),
+	KeyManagementServiceLookupDomain(),
+	KeyManagementServiceLowPriority(),
+	KeyManagementServiceMachine(),
+	KeyManagementServiceNonGenuineGraceRequests(),
+	KeyManagementServiceNotificationRequests(),
+	KeyManagementServiceOOBGraceRequests(),
+	KeyManagementServiceOOTGraceRequests(),
+	KeyManagementServicePort(),
+	KeyManagementServiceProductKeyID(),
+	KeyManagementServiceTotalRequests(),
+	KeyManagementServiceUnlicensedRequests(),
+	OA2xBiosMarkerMinorVersion(),
+	OA2xBiosMarkerStatus(),
+	OA3xOriginalProductKey(),
+	OA3xOriginalProductKeyDescription(),
+	OA3xOriginalProductKeyPkPn(),
+	PolicyCacheRefreshRequired(),
+	RemainingWindowsReArmCount(),
+	RequiredClientCount(),
+	TokenActivationAdditionalInfo(),
+	TokenActivationCertificateThumbprint(),
+	TokenActivationGrantNumber(),
+	TokenActivationILID(),
+	TokenActivationILVID(),
+	Version(),
+	VLActivationInterval(),
+	VLRenewalInterval()
+	{}
+	void setProperties(const WmiResult &result, std::size_t index)
+	{
+		 result.extract(index, "ClientMachineID", (*this).ClientMachineID);
+		result.extract(index, "DiscoveredKeyManagementServiceMachineIpAddress", (*this).DiscoveredKeyManagementServiceMachineIpAddress);
+		result.extract(index, "DiscoveredKeyManagementServiceMachineName", (*this).DiscoveredKeyManagementServiceMachineName);
+		result.extract(index, "DiscoveredKeyManagementServiceMachinePort", (*this).DiscoveredKeyManagementServiceMachinePort);
+		result.extract(index, "IsKeyManagementServiceMachine", (*this).IsKeyManagementServiceMachine);
+		result.extract(index, "KeyManagementServiceCurrentCount", (*this).KeyManagementServiceCurrentCount);
+		result.extract(index, "KeyManagementServiceDnsPublishing", (*this).KeyManagementServiceDnsPublishing);
+		result.extract(index, "KeyManagementServiceFailedRequests", (*this).KeyManagementServiceFailedRequests);
+		result.extract(index, "KeyManagementServiceHostCaching", (*this).KeyManagementServiceHostCaching);
+		result.extract(index, "KeyManagementServiceLicensedRequests", (*this).KeyManagementServiceLicensedRequests);
+		result.extract(index, "KeyManagementServiceListeningPort", (*this).KeyManagementServiceListeningPort);
+		result.extract(index, "KeyManagementServiceLookupDomain", (*this).KeyManagementServiceLookupDomain);
+		result.extract(index, "KeyManagementServiceLowPriority", (*this).KeyManagementServiceLowPriority);
+		result.extract(index, "KeyManagementServiceMachine", (*this).KeyManagementServiceMachine);
+		result.extract(index, "KeyManagementServiceNonGenuineGraceRequests", (*this).KeyManagementServiceNonGenuineGraceRequests);
+		result.extract(index, "KeyManagementServiceNotificationRequests", (*this).KeyManagementServiceNotificationRequests);
+		result.extract(index, "KeyManagementServiceOOBGraceRequests", (*this).KeyManagementServiceOOBGraceRequests);
+		result.extract(index, "KeyManagementServiceOOTGraceRequests", (*this).KeyManagementServiceOOTGraceRequests);
+		result.extract(index, "KeyManagementServicePort", (*this).KeyManagementServicePort);
+		result.extract(index, "KeyManagementServiceProductKeyID", (*this).KeyManagementServiceProductKeyID);
+		result.extract(index, "KeyManagementServiceTotalRequests", (*this).KeyManagementServiceTotalRequests);
+		result.extract(index, "KeyManagementServiceUnlicensedRequests", (*this).KeyManagementServiceUnlicensedRequests);
+		result.extract(index, "OA2xBiosMarkerMinorVersion", (*this).OA2xBiosMarkerMinorVersion);
+		result.extract(index, "OA2xBiosMarkerStatus", (*this).OA2xBiosMarkerStatus);
+		result.extract(index, "OA3xOriginalProductKey", (*this).OA3xOriginalProductKey);
+		result.extract(index, "OA3xOriginalProductKeyDescription", (*this).OA3xOriginalProductKeyDescription);
+		result.extract(index, "OA3xOriginalProductKeyPkPn", (*this).OA3xOriginalProductKeyPkPn);
+		result.extract(index, "PolicyCacheRefreshRequired", (*this).PolicyCacheRefreshRequired);
+		result.extract(index, "RemainingWindowsReArmCount", (*this).RemainingWindowsReArmCount);
+		result.extract(index, "RequiredClientCount", (*this).RequiredClientCount);
+		result.extract(index, "TokenActivationAdditionalInfo", (*this).TokenActivationAdditionalInfo);
+		result.extract(index, "TokenActivationCertificateThumbprint", (*this).TokenActivationCertificateThumbprint);
+		result.extract(index, "TokenActivationGrantNumber", (*this).TokenActivationGrantNumber);
+		result.extract(index, "TokenActivationILID", (*this).TokenActivationILID);
+		result.extract(index, "TokenActivationILVID", (*this).TokenActivationILVID);
+		result.extract(index, "Version", (*this).Version);
+		result.extract(index, "VLActivationInterval", (*this).VLActivationInterval);
+		result.extract(index, "VLRenewalInterval", (*this).VLRenewalInterval);
+	}
+	static std::string getWmiClassName()
+	{
+		return "SoftwareLicensingService";
+	}
+	std::string ClientMachineID;
+	std::string DiscoveredKeyManagementServiceMachineIpAddress;
+	std::string DiscoveredKeyManagementServiceMachineName;
+	int DiscoveredKeyManagementServiceMachinePort;
+	int IsKeyManagementServiceMachine ;
+	int KeyManagementServiceCurrentCount ;
+	bool KeyManagementServiceDnsPublishing ;
+	int KeyManagementServiceFailedRequests ;
+	bool KeyManagementServiceHostCaching ;
+	int KeyManagementServiceLicensedRequests ;
+	int KeyManagementServiceListeningPort ;
+	std::string KeyManagementServiceLookupDomain;
+	bool KeyManagementServiceLowPriority ;
+	std::string KeyManagementServiceMachine;
+	int KeyManagementServiceNonGenuineGraceRequests ;
+	int KeyManagementServiceNotificationRequests ;
+	int KeyManagementServiceOOBGraceRequests ;
+	int KeyManagementServiceOOTGraceRequests ;
+	int KeyManagementServicePort ;
+	std::string KeyManagementServiceProductKeyID;
+	int KeyManagementServiceTotalRequests ;
+	int KeyManagementServiceUnlicensedRequests ;
+	int OA2xBiosMarkerMinorVersion ;
+	int OA2xBiosMarkerStatus ;
+	std::string OA3xOriginalProductKey;
+	std::string OA3xOriginalProductKeyDescription;
+	std::string OA3xOriginalProductKeyPkPn;
+	int PolicyCacheRefreshRequired ;
+	int RemainingWindowsReArmCount ;
+	int RequiredClientCount ;
+	std::string TokenActivationAdditionalInfo;
+	int TokenActivationCertificateThumbprint;
+	int TokenActivationGrantNumber ;
+	std::string TokenActivationILID;
+	int TokenActivationILVID ;
+	std::string Version;
+	int VLActivationInterval ;
+	int VLRenewalInterval ;
+};
 } //end namespace wmi
 
 #endif //WMICLASSES_HPP

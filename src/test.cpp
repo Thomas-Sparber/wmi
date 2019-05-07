@@ -23,11 +23,14 @@ int main(int /*argc*/, char */*args*/[])
 	try {
 		Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
 		Win32_ComputerSystemProduct product  = retrieveWmi<Win32_ComputerSystemProduct>();
+		SoftwareLicensingService liscense  = retrieveWmi<SoftwareLicensingService>();
 
 		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
 		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
 		cout<<endl;
-		cout<<"Installed services:"<<endl;
+                cout << "Machine Id:" << liscense.ClientMachineID << " Kmsid:" << liscense.KeyManagementServiceProductKeyID << std::endl;
+                cout<<"Installed services:"<<endl;
+		
 		for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())
 		{
 			cout<<service.Caption<<" started:"<<service.Started<<" state:"<<service.State<<  endl;
