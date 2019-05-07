@@ -15,3 +15,7 @@ add_executable(test_wmi ${PROJECT_SOURCE_DIR}/src/test.cpp)
 
 target_link_libraries(wmi ole32 oleaut32 wbemuuid )
 target_link_libraries(test_wmi wmi ole32 oleaut32 wbemuuid)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
