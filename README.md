@@ -14,7 +14,7 @@ Usage
 -----
 I think it is so simple that a small program explains the usage without
 any further comments:
-
+```cpp
     int main(int /*argc*/, char */*args*/[])
     {
         try {
@@ -39,7 +39,7 @@ any further comments:
     
         return 0;
     }
-
+```
 The include file <wmi.hpp> contains all interfaces to execute WMI queries.
 The include file <wmiclasses.hpp> contains some predefined WMI classes
 (e.g. Win32_ComputerSystem or Win32_Service...)
@@ -48,7 +48,7 @@ Create WMI classes
 ------------------
 As already mentioned, the include file <wmiclasses.hpp> provides some standard
 WMI classes, but it is also very easy to add more of them. All you need to do is:
-
+```cpp
     struct Win32_MyCustomClass
     {
     
@@ -77,5 +77,5 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
         //All the other properties you wish to read from WMI
     
     }; //end struct Win32_ComputerSystem
-
+```
 These two functions are the only requirements your class needs to have.
