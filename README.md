@@ -18,8 +18,14 @@ any further comments:
     int main(int /*argc*/, char */*args*/[])
     {
         try {
-            Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
-            cout<<"Computername: "<<computer.Name<<"."<<computer.Domain<<endl;
+		Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
+		Win32_ComputerSystemProduct product  = retrieveWmi<Win32_ComputerSystemProduct>();
+		SoftwareLicensingService liscense  = retrieveWmi<SoftwareLicensingService>();
+		Win32_OperatingSystem os_info  = retrieveWmi<Win32_OperatingSystem>();
+
+		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
+		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
+		cout<<"Architecture: "<<os_info.OSArchitecture<<std::endl;
             cout<<endl;
             cout<<"Installed services:"<<endl;
             for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())

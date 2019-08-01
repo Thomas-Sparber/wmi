@@ -515,7 +515,7 @@ struct SoftwareLicensingService{
 	{}
 	void setProperties(const WmiResult &result, std::size_t index)
 	{
-		 result.extract(index, "ClientMachineID", (*this).ClientMachineID);
+		result.extract(index, "ClientMachineID", (*this).ClientMachineID);
 		result.extract(index, "DiscoveredKeyManagementServiceMachineIpAddress", (*this).DiscoveredKeyManagementServiceMachineIpAddress);
 		result.extract(index, "DiscoveredKeyManagementServiceMachineName", (*this).DiscoveredKeyManagementServiceMachineName);
 		result.extract(index, "DiscoveredKeyManagementServiceMachinePort", (*this).DiscoveredKeyManagementServiceMachinePort);
@@ -596,6 +596,191 @@ struct SoftwareLicensingService{
 	std::string Version;
 	int VLActivationInterval ;
 	int VLRenewalInterval ;
+};
+
+struct Win32_OperatingSystem
+{
+	Win32_OperatingSystem():
+	BootDevice(),
+	BuildNumber(),
+	BuildType(),
+	Caption(),
+	CodeSet(),
+	CountryCode(),
+	CreationClassName(),
+	CSCreationClassName(),
+	CSName(),
+	CurrentTimeZone(),
+	DataExecutionPrevention_32BitApplications(),
+	DataExecutionPrevention_Available(),
+	DataExecutionPrevention_Drivers(),
+	DataExecutionPrevention_SupportPolicy(),
+	Debug(),
+	Description(),
+	Distributed(),
+	EncryptionLevel(),
+	ForegroundApplicationBoost(),
+	FreePhysicalMemory(),
+	FreeSpaceInPagingFiles(),
+	FreeVirtualMemory(),
+	InstallDate(),
+	LastBootUpTime(),
+	LocalDateTime(),
+	Locale(),
+	Manufacturer(),
+	MaxNumberOfProcesses(),
+	MaxProcessMemorySize(),
+	MUILanguages(),
+	Name(),
+	NumberOfProcesses(),
+	NumberOfUsers(),
+	OperatingSystemSKU(),
+	Organization(),
+	OSArchitecture(),
+	OSLanguage(),
+	OSProductSuite(),
+	OSType(),
+	PortableOperatingSystem(),
+	Primary(),
+	ProductType(),
+	RegisteredUser(),
+	SerialNumber(),
+	ServicePackMajorVersion(),
+	ServicePackMinorVersion(),
+	SizeStoredInPagingFiles(),
+	Status(),
+	SuiteMask(),
+	SystemDevice(),
+	SystemDirectory(),
+	SystemDrive(),
+	TotalVirtualMemorySize(),
+	TotalVisibleMemorySize(),
+	Version(),
+	WindowsDirectory()
+	{}
+
+	void setProperties(const WmiResult &result, std::size_t index)
+	{
+		result.extract(index, "BootDevice", (*this).BootDevice);
+		result.extract(index, "BuildNumber", (*this).BuildNumber);
+		result.extract(index, "BuildType", (*this).BuildType);
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "CodeSet", (*this).CodeSet);
+		result.extract(index, "CountryCode", (*this).CountryCode);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "CSCreationClassName", (*this).CSCreationClassName);
+		result.extract(index, "CSName", (*this).CSName);
+		result.extract(index, "CurrentTimeZone", (*this).CurrentTimeZone);
+		result.extract(index, "DataExecutionPrevention_32BitApplications", (*this).DataExecutionPrevention_32BitApplications);
+		result.extract(index, "DataExecutionPrevention_Available", (*this).DataExecutionPrevention_Available);
+		result.extract(index, "DataExecutionPrevention_Drivers", (*this).DataExecutionPrevention_Drivers);
+		result.extract(index, "DataExecutionPrevention_SupportPolicy", (*this).DataExecutionPrevention_SupportPolicy);
+		result.extract(index, "Debug", (*this).Debug);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "Distributed", (*this).Distributed);
+		result.extract(index, "EncryptionLevel", (*this).EncryptionLevel);
+		result.extract(index, "ForegroundApplicationBoost", (*this).ForegroundApplicationBoost);
+		result.extract(index, "FreePhysicalMemory", (*this).FreePhysicalMemory);
+		result.extract(index, "FreeSpaceInPagingFiles", (*this).FreeSpaceInPagingFiles);
+		result.extract(index, "FreeVirtualMemory", (*this).FreeVirtualMemory);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "LastBootUpTime", (*this).LastBootUpTime);
+		result.extract(index, "LocalDateTime", (*this).LocalDateTime);
+		result.extract(index, "Locale", (*this).Locale);
+		result.extract(index, "Manufacturer", (*this).Manufacturer);
+		result.extract(index, "MaxNumberOfProcesses", (*this).MaxNumberOfProcesses);
+		result.extract(index, "MaxProcessMemorySize", (*this).MaxProcessMemorySize);
+		result.extract(index, "MUILanguages", (*this).MUILanguages);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "NumberOfProcesses", (*this).NumberOfProcesses);
+		result.extract(index, "NumberOfUsers", (*this).NumberOfUsers);
+		result.extract(index, "OperatingSystemSKU", (*this).OperatingSystemSKU);
+		result.extract(index, "Organization", (*this).Organization);
+		result.extract(index, "OSArchitecture", (*this).OSArchitecture);
+		result.extract(index, "OSLanguage", (*this).OSLanguage);
+		result.extract(index, "OSProductSuite", (*this).OSProductSuite);
+		result.extract(index, "OSType", (*this).OSType);
+		result.extract(index, "PortableOperatingSystem", (*this).PortableOperatingSystem);
+		result.extract(index, "Primary", (*this).Primary);
+		result.extract(index, "ProductType", (*this).ProductType);
+		result.extract(index, "RegisteredUser", (*this).RegisteredUser);
+		result.extract(index, "SerialNumber", (*this).SerialNumber);
+		result.extract(index, "ServicePackMajorVersion", (*this).ServicePackMajorVersion);
+		result.extract(index, "ServicePackMinorVersion", (*this).ServicePackMinorVersion);
+		result.extract(index, "SizeStoredInPagingFiles", (*this).SizeStoredInPagingFiles);
+		result.extract(index, "Status", (*this).Status);
+		result.extract(index, "SuiteMask", (*this).SuiteMask);
+		result.extract(index, "SystemDevice", (*this).SystemDevice);
+		result.extract(index, "SystemDirectory", (*this).SystemDirectory);
+		result.extract(index, "SystemDrive", (*this).SystemDrive);
+		result.extract(index, "TotalVirtualMemorySize", (*this).TotalVirtualMemorySize);
+		result.extract(index, "TotalVisibleMemorySize", (*this).TotalVisibleMemorySize);
+		result.extract(index, "Version", (*this).Version);
+		result.extract(index, "WindowsDirectory", (*this).WindowsDirectory);
+		 
+	}
+	static std::string getWmiClassName()
+	{
+		return "Win32_OperatingSystem";
+	}
+	std::string BootDevice ;
+	std::string BuildNumber ;
+	std::string BuildType ;
+	std::string Caption ;
+	std::string CodeSet ;
+	std::string CountryCode ;
+	std::string CreationClassName ;
+	std::string CSCreationClassName ;
+	std::string CSName ;
+	int CurrentTimeZone ;
+	bool DataExecutionPrevention_32BitApplications ;
+	bool DataExecutionPrevention_Available ;
+	bool DataExecutionPrevention_Drivers ;
+	int DataExecutionPrevention_SupportPolicy ;
+	bool Debug ;
+	std::string Description ;
+	bool Distributed ;
+	int EncryptionLevel ;
+	int ForegroundApplicationBoost ;
+	uint64_t    FreePhysicalMemory ;
+	uint64_t    FreeSpaceInPagingFiles ;
+	uint64_t    FreeVirtualMemory ;
+	/////////////////////////////////////////////////////
+	std::string InstallDate ;
+	std::string LastBootUpTime ;///THIS MAYBE INCORRECT
+	std::string LocalDateTime ;
+	/////////////////////////////////////////////////////////
+	std::string Locale ;
+	std::string Manufacturer ;
+	uint64_t    MaxNumberOfProcesses ;
+	uint64_t    MaxProcessMemorySize ;
+	std::string MUILanguages ;
+	std::string Name ;
+	int NumberOfProcesses ;
+	int NumberOfUsers ;
+	int OperatingSystemSKU ;
+	std::string Organization ;
+	std::string OSArchitecture ;
+	int OSLanguage ;
+	int OSProductSuite ;
+	int OSType ;
+	bool PortableOperatingSystem ;
+	bool Primary ;
+	int ProductType ;
+	std::string RegisteredUser ;
+	std::string SerialNumber ;
+	int ServicePackMajorVersion ;
+	int ServicePackMinorVersion ;
+	uint64_t    SizeStoredInPagingFiles ;
+	std::string Status ;
+	int SuiteMask ;
+	std::string SystemDevice ;
+	std::string SystemDirectory ;
+	std::string SystemDrive ;
+	uint64_t    TotalVirtualMemorySize ;
+	uint64_t    TotalVisibleMemorySize ;
+	std::string Version ;
+	std::string WindowsDirectory ;
 };
 } //end namespace wmi
 
