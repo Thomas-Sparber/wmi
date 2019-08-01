@@ -58,11 +58,8 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
          **/
         void setProperties(const WmiResult &result, std::size_t index)
         {
-		    //This macro reads all the properties from the WmiResult
-			//and stores them in the given variables
-            SET_VARIABLES(result, index, (*this),
-                name, //and all the other WMI properties
-            );
+            //EXAMPLE EXTRACTING PROPERTY TO CLASS
+		    result.extract(index, "AcceptPause", (*this).AcceptPause);
         }
     
         /**
