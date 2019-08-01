@@ -59,7 +59,7 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
         void setProperties(const WmiResult &result, std::size_t index)
         {
             //EXAMPLE EXTRACTING PROPERTY TO CLASS
-		    result.extract(index, "AcceptPause", (*this).AcceptPause);
+		    result.extract(index, "name", (*this).name);
         }
     
         /**
