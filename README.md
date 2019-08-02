@@ -14,12 +14,18 @@ Usage
 -----
 I think it is so simple that a small program explains the usage without
 any further comments:
-
+```cpp
     int main(int /*argc*/, char */*args*/[])
     {
         try {
-            Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
-            cout<<"Computername: "<<computer.Name<<"."<<computer.Domain<<endl;
+		Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
+		Win32_ComputerSystemProduct product  = retrieveWmi<Win32_ComputerSystemProduct>();
+		SoftwareLicensingService liscense  = retrieveWmi<SoftwareLicensingService>();
+		Win32_OperatingSystem os_info  = retrieveWmi<Win32_OperatingSystem>();
+
+		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
+		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
+		cout<<"Architecture: "<<os_info.OSArchitecture<<std::endl;
             cout<<endl;
             cout<<"Installed services:"<<endl;
             for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())
@@ -33,7 +39,7 @@ any further comments:
     
         return 0;
     }
-
+```
 The include file <wmi.hpp> contains all interfaces to execute WMI queries.
 The include file <wmiclasses.hpp> contains some predefined WMI classes
 (e.g. Win32_ComputerSystem or Win32_Service...)
@@ -42,7 +48,7 @@ Create WMI classes
 ------------------
 As already mentioned, the include file <wmiclasses.hpp> provides some standard
 WMI classes, but it is also very easy to add more of them. All you need to do is:
-
+```cpp
     struct Win32_MyCustomClass
     {
     
@@ -52,11 +58,8 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
          **/
         void setProperties(const WmiResult &result, std::size_t index)
         {
-		    //This macro reads all the properties from the WmiResult
-			//and stores them in the given variables
-            SET_VARIABLES(result, index, (*this),
-                name, //and all the other WMI properties
-            );
+            //EXAMPLE EXTRACTING PROPERTY TO CLASS
+		    result.extract(index, "name", (*this).name);
         }
     
         /**
@@ -71,5 +74,5 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
         //All the other properties you wish to read from WMI
     
     }; //end struct Win32_ComputerSystem
-
+```
 These two functions are the only requirements your class needs to have.

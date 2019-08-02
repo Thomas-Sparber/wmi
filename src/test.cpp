@@ -24,9 +24,11 @@ int main(int /*argc*/, char */*args*/[])
 		Win32_ComputerSystem computer = retrieveWmi<Win32_ComputerSystem>();
 		Win32_ComputerSystemProduct product  = retrieveWmi<Win32_ComputerSystemProduct>();
 		SoftwareLicensingService liscense  = retrieveWmi<SoftwareLicensingService>();
+		Win32_OperatingSystem os_info  = retrieveWmi<Win32_OperatingSystem>();
 
 		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
 		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
+		cout<<"Architecture: "<<os_info.OSArchitecture<<std::endl;
 		cout<<endl;
                 cout << "Machine Id:" << liscense.ClientMachineID << " Kmsid:" << liscense.KeyManagementServiceProductKeyID << std::endl;
                 cout<<"Installed services:"<<endl;
