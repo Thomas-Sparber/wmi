@@ -276,6 +276,148 @@ struct Win32_ParallelPort
 
 }; //end class Win32_ParallelPort
 
+
+struct Win32_Processor
+{
+	Win32_Processor() :
+		AddressWidth(), Architecture(), AssetTag(), Availability(), Caption(), Characteristics(), ConfigManagerErrorCode(),
+		ConfigManagerUserConfig(), CpuStatus(), CreationClassName(), CurrentClockSpeed(), CurrentVoltage(), DataWidth(),
+		Description(), DeviceID(), ErrorCleared(), ErrorDescription(), ExtClock(), Family(), InstallDate(),
+		L2CacheSize(), L2CacheSpeed(), L3CacheSize(), L3CacheSpeed(), LastErrorCode(), Level(), LoadPercentage(),
+		Manufacturer(), MaxClockSpeed(), Name(), NumberOfCores(), NumberOfEnabledCore(), NumberOfLogicalProcessors(),
+		OtherFamilyDescription(), PartNumber(), PNPDeviceID(), PowerManagementCapabilities(), PowerManagementSupported(), ProcessorId(),
+		ProcessorType(), Revision(), SecondLevelAddressTranslationExtensions(), SerialNumber(), SocketDesignation(),
+		Status(), StatusInfo(), Stepping(), SystemCreationClassName(), SystemName(), ThreadCount(), UniqueId(),
+		UpgradeMethod(), Version(), VirtualizationFirmwareEnabled(), VMMonitorModeExtensions(), VoltageCaps()
+	{}
+
+	void setProperties(const WmiResult& result, std::size_t index)
+	{
+		//vscode was a great help with search(.+?), 
+		//and replace result.extract(index, "$1", (*this).$1);
+		result.extract(index, "AddressWidth", (*this).AddressWidth);
+		result.extract(index, "Architecture", (*this).Architecture);
+		result.extract(index, "AssetTag", (*this).AssetTag);
+		result.extract(index, "Availability", (*this).Availability);
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "Characteristics", (*this).Characteristics);
+		result.extract(index, "ConfigManagerErrorCode", (*this).ConfigManagerErrorCode);
+		result.extract(index, "ConfigManagerUserConfig", (*this).ConfigManagerUserConfig);
+		result.extract(index, "CpuStatus", (*this).CpuStatus);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "CurrentClockSpeed", (*this).CurrentClockSpeed);
+		result.extract(index, "CurrentVoltage", (*this).CurrentVoltage);
+		result.extract(index, "DataWidth", (*this).DataWidth);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "DeviceID", (*this).DeviceID);
+		result.extract(index, "ErrorCleared", (*this).ErrorCleared);
+		result.extract(index, "ErrorDescription", (*this).ErrorDescription);
+		result.extract(index, "ExtClock", (*this).ExtClock);
+		result.extract(index, "Family", (*this).Family);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "L2CacheSize", (*this).L2CacheSize);
+		result.extract(index, "L2CacheSpeed", (*this).L2CacheSpeed);
+		result.extract(index, "L3CacheSize", (*this).L3CacheSize);
+		result.extract(index, "L3CacheSpeed", (*this).L3CacheSpeed);
+		result.extract(index, "LastErrorCode", (*this).LastErrorCode);
+		result.extract(index, "Level", (*this).Level);
+		result.extract(index, "LoadPercentage", (*this).LoadPercentage);
+		result.extract(index, "Manufacturer", (*this).Manufacturer);
+		result.extract(index, "MaxClockSpeed", (*this).MaxClockSpeed);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "NumberOfCores", (*this).NumberOfCores);
+		result.extract(index, "NumberOfEnabledCore", (*this).NumberOfEnabledCore);
+		result.extract(index, "NumberOfLogicalProcessors", (*this).NumberOfLogicalProcessors);
+		result.extract(index, "OtherFamilyDescription", (*this).OtherFamilyDescription);
+		result.extract(index, "PartNumber", (*this).PartNumber);
+		result.extract(index, "PNPDeviceID", (*this).PNPDeviceID);
+		result.extract(index, "PowerManagementCapabilities", (*this).PowerManagementCapabilities);
+		result.extract(index, "PowerManagementSupported", (*this).PowerManagementSupported);
+		result.extract(index, "ProcessorId", (*this).ProcessorId);
+		result.extract(index, "ProcessorType", (*this).ProcessorType);
+		result.extract(index, "Revision", (*this).Revision);
+		result.extract(index, "SecondLevelAddressTranslationExtensions", (*this).SecondLevelAddressTranslationExtensions);
+		result.extract(index, "SerialNumber", (*this).SerialNumber);
+		result.extract(index, "SocketDesignation", (*this).SocketDesignation);
+		result.extract(index, "Status", (*this).Status);
+		result.extract(index, "StatusInfo", (*this).StatusInfo);
+		result.extract(index, "Stepping", (*this).Stepping);
+		result.extract(index, "SystemCreationClassName", (*this).SystemCreationClassName);
+		result.extract(index, "SystemName", (*this).SystemName);
+		result.extract(index, "ThreadCount", (*this).ThreadCount);
+		result.extract(index, "UniqueId", (*this).UniqueId);
+		result.extract(index, "UpgradeMethod", (*this).UpgradeMethod);
+		result.extract(index, "Version", (*this).Version);
+		result.extract(index, "VirtualizationFirmwareEnabled", (*this).VirtualizationFirmwareEnabled);
+		result.extract(index, "VMMonitorModeExtensions", (*this).VMMonitorModeExtensions);
+		result.extract(index, "VoltageCaps", (*this).VoltageCaps);
+	}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_Processor";
+	}
+
+	int AddressWidth;
+	int Architecture;
+	std::string AssetTag;
+	int Availability;
+	std::string Caption;
+	std::string Characteristics;
+	int ConfigManagerErrorCode;
+	bool ConfigManagerUserConfig;
+	int CpuStatus;
+	std::string CreationClassName;
+	int CurrentClockSpeed;
+	int CurrentVoltage;
+	int DataWidth;
+	std::string Description;
+	std::string DeviceID;
+	std::string ErrorCleared;
+	std::string ErrorDescription;
+	int ExtClock;
+	int Family;
+	std::string InstallDate;
+	int L2CacheSize;
+	int L2CacheSpeed;
+	int L3CacheSize;
+	int L3CacheSpeed;
+	int LastErrorCode;
+	int Level;
+	int LoadPercentage;
+	std::string Manufacturer;
+	int MaxClockSpeed;
+	std::string Name;
+	int NumberOfCores;
+	int NumberOfEnabledCore;
+	int NumberOfLogicalProcessors;
+	std::string OtherFamilyDescription;
+	std::string PartNumber;
+	std::string PNPDeviceID;
+	std::string PowerManagementCapabilities;
+	bool PowerManagementSupported;
+	std::string ProcessorId;
+	int ProcessorType;
+	int Revision;
+	std::string Role;
+	bool SecondLevelAddressTranslationExtensions;
+	std::string SerialNumber;
+	std::string SocketDesignation;
+	std::string Status;
+	std::string StatusInfo;
+	std::string Stepping;
+	std::string SystemCreationClassName;
+	std::string SystemName;
+	std::string ThreadCount;
+	std::string UniqueId;
+	int UpgradeMethod;
+	std::string Version;
+	bool VirtualizationFirmwareEnabled;
+	bool VMMonitorModeExtensions;
+	int VoltageCaps;
+
+}; //end class Win32_Processor
+
 struct Win32_Service
 {
 
