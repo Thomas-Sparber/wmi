@@ -52,6 +52,7 @@ void setProperties(const WmiResult &result, std::size_t index){
     std::string Vendor;
     std::string Version;
 };
+
 struct Win32_ComputerSystem
 {
 
@@ -276,6 +277,71 @@ struct Win32_ParallelPort
 
 }; //end class Win32_ParallelPort
 
+struct Win32_PhysicalMedia
+{
+	Win32_PhysicalMedia() :
+		Caption(), Description(), InstallDate(), Name(), Status(), CreationClassName(),
+		Manufacturer(), Model(), SKU(), SerialNumber(), Tag(), Version(), PartNumber(),
+		OtherIdentifyingInfo(), PoweredOn(), Removable(), Replaceable(), HotSwappable(),
+		Capacity(), MediaType(), MediaDescription(), WriteProtectOn(), CleanerMedia()
+	{}
+
+	void setProperties(const WmiResult& result, std::size_t index)
+	{
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "Status", (*this).Status);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "Manufacturer", (*this).Manufacturer);
+		result.extract(index, "Model", (*this).Model);
+		result.extract(index, "SKU", (*this).SKU);
+		result.extract(index, "SerialNumber", (*this).SerialNumber);
+		result.extract(index, "Tag", (*this).Tag);
+		result.extract(index, "Version", (*this).Version);
+		result.extract(index, "PartNumber", (*this).PartNumber);
+		result.extract(index, "OtherIdentifyingInfo", (*this).OtherIdentifyingInfo);
+		result.extract(index, "PoweredOn", (*this).Removable);
+		result.extract(index, "Replaceable", (*this).Replaceable);
+		result.extract(index, "HotSwappable", (*this).HotSwappable);
+		result.extract(index, "Capacity", (*this).Capacity);
+		result.extract(index, "MediaType", (*this).MediaType);
+		result.extract(index, "MediaDescription", (*this).MediaDescription);
+		result.extract(index, "WriteProtectOn", (*this).WriteProtectOn);
+		result.extract(index, "CleanerMedia", (*this).CleanerMedia);
+	}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_PhysicalMedia";
+	}
+
+	std::string Caption;
+	std::string Description;
+	std::string InstallDate;
+	std::string Name;
+	std::string Status;
+	std::string CreationClassName;
+	std::string Manufacturer;
+	std::string Model;
+	std::string SKU;
+	std::string SerialNumber;
+	std::string Tag;
+	std::string Version;
+	std::string PartNumber;
+	std::string OtherIdentifyingInfo;
+	bool PoweredOn;
+	bool Removable;
+	bool Replaceable;
+	bool HotSwappable;
+	std::string Capacity;
+	int MediaType;
+	std::string MediaDescription;
+	bool WriteProtectOn;
+	bool CleanerMedia;
+
+}; //end class Win32_PhysicalMedia
 
 struct Win32_Processor
 {
