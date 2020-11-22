@@ -496,7 +496,6 @@ struct Win32_Service
 
 	void setProperties(const WmiResult &result, std::size_t index)
 	{
-
 		result.extract(index, "AcceptPause", (*this).AcceptPause);
 		result.extract(index, "AcceptStop", (*this).AcceptStop);
 		result.extract(index, "Caption", (*this).Caption);
@@ -576,53 +575,53 @@ struct Win32_SerialPort
 
 	void setProperties(const WmiResult &result, std::size_t index)
 	{
-	result.extract(index,"Availability",(*this).Availability);
-	result.extract(index,"Binary",(*this).Binary);
-	result.extract(index,"Capabilities",(*this).Capabilities);
-	result.extract(index,"CapabilityDescriptions",(*this).CapabilityDescriptions);
-	result.extract(index,"Caption",(*this).Caption);
-	result.extract(index,"ConfigManagerErrorCode",(*this).ConfigManagerErrorCode);
-	result.extract(index,"ConfigManagerUserConfig",(*this).ConfigManagerUserConfig);
-	result.extract(index,"CreationClassName",(*this).CreationClassName);
-	result.extract(index,"Description",(*this).Description);
-	result.extract(index,"DeviceID",(*this).DeviceID);
-	result.extract(index,"ErrorCleared",(*this).ErrorCleared);
-	result.extract(index,"ErrorDescription",(*this).ErrorDescription);
-	result.extract(index,"InstallDate",(*this).InstallDate);
-	result.extract(index,"LastErrorCode",(*this).LastErrorCode);
-	result.extract(index,"MaxBaudRate",(*this).MaxBaudRate);
-	result.extract(index,"MaximumInputBufferSize",(*this).MaximumInputBufferSize);
-	result.extract(index,"MaximumOutputBufferSize",(*this).MaximumOutputBufferSize);
-	result.extract(index,"MaxNumberControlled",(*this).MaxNumberControlled);
-	result.extract(index,"Name",(*this).Name);
-	result.extract(index,"OSAutoDiscovered",(*this).OSAutoDiscovered);
-	result.extract(index,"PNPDeviceID",(*this).PNPDeviceID);
-	result.extract(index,"PowerManagementCapabilities",(*this).PowerManagementCapabilities);
-	result.extract(index,"PowerManagementSupported",(*this).PowerManagementSupported);
-	result.extract(index,"ProtocolSupported",(*this).ProtocolSupported);
-	result.extract(index,"ProviderType",(*this).ProviderType);
-	result.extract(index,"SettableBaudRate",(*this).SettableBaudRate);
-	result.extract(index,"SettableDataBits",(*this).SettableDataBits);
-	result.extract(index,"SettableFlowControl",(*this).SettableFlowControl);
-	result.extract(index,"SettableParity",(*this).SettableParity);
-	result.extract(index,"SettableParityCheck",(*this).SettableParityCheck);
-	result.extract(index,"SettableRLSD",(*this).SettableRLSD);
-	result.extract(index,"SettableStopBits",(*this).SettableStopBits);
-	result.extract(index,"Status",(*this).Status);
-	result.extract(index,"StatusInfo",(*this).StatusInfo);
-	result.extract(index,"Supports16BitMode",(*this).Supports16BitMode);
-	result.extract(index,"SupportsDTRDSR",(*this).SupportsDTRDSR);
-	result.extract(index,"SupportsElapsedTimeouts",(*this).SupportsElapsedTimeouts);
-	result.extract(index,"SupportsIntTimeouts",(*this).SupportsIntTimeouts);
-	result.extract(index,"SupportsParityCheck",(*this).SupportsParityCheck);
-	result.extract(index,"SupportsRLSD",(*this).SupportsRLSD);
-	result.extract(index,"SupportsRTSCTS",(*this).SupportsRTSCTS);
-	result.extract(index,"SupportsSpecialCharacters",(*this).SupportsSpecialCharacters);
-	result.extract(index,"SupportsXOnXOff",(*this).SupportsXOnXOff);
-	result.extract(index,"SupportsXOnXOffSet",(*this).SupportsXOnXOffSet);
-	result.extract(index,"SystemCreationClassName",(*this).SystemCreationClassName);
-	result.extract(index,"SystemName",(*this).SystemName);
-	result.extract(index,"TimeOfLastReset",(*this).TimeOfLastReset);
+		result.extract(index,"Availability",(*this).Availability);
+		result.extract(index,"Binary",(*this).Binary);
+		result.extract(index,"Capabilities",(*this).Capabilities);
+		result.extract(index,"CapabilityDescriptions",(*this).CapabilityDescriptions);
+		result.extract(index,"Caption",(*this).Caption);
+		result.extract(index,"ConfigManagerErrorCode",(*this).ConfigManagerErrorCode);
+		result.extract(index,"ConfigManagerUserConfig",(*this).ConfigManagerUserConfig);
+		result.extract(index,"CreationClassName",(*this).CreationClassName);
+		result.extract(index,"Description",(*this).Description);
+		result.extract(index,"DeviceID",(*this).DeviceID);
+		result.extract(index,"ErrorCleared",(*this).ErrorCleared);
+		result.extract(index,"ErrorDescription",(*this).ErrorDescription);
+		result.extract(index,"InstallDate",(*this).InstallDate);
+		result.extract(index,"LastErrorCode",(*this).LastErrorCode);
+		result.extract(index,"MaxBaudRate",(*this).MaxBaudRate);
+		result.extract(index,"MaximumInputBufferSize",(*this).MaximumInputBufferSize);
+		result.extract(index,"MaximumOutputBufferSize",(*this).MaximumOutputBufferSize);
+		result.extract(index,"MaxNumberControlled",(*this).MaxNumberControlled);
+		result.extract(index,"Name",(*this).Name);
+		result.extract(index,"OSAutoDiscovered",(*this).OSAutoDiscovered);
+		result.extract(index,"PNPDeviceID",(*this).PNPDeviceID);
+		result.extract(index,"PowerManagementCapabilities",(*this).PowerManagementCapabilities);
+		result.extract(index,"PowerManagementSupported",(*this).PowerManagementSupported);
+		result.extract(index,"ProtocolSupported",(*this).ProtocolSupported);
+		result.extract(index,"ProviderType",(*this).ProviderType);
+		result.extract(index,"SettableBaudRate",(*this).SettableBaudRate);
+		result.extract(index,"SettableDataBits",(*this).SettableDataBits);
+		result.extract(index,"SettableFlowControl",(*this).SettableFlowControl);
+		result.extract(index,"SettableParity",(*this).SettableParity);
+		result.extract(index,"SettableParityCheck",(*this).SettableParityCheck);
+		result.extract(index,"SettableRLSD",(*this).SettableRLSD);
+		result.extract(index,"SettableStopBits",(*this).SettableStopBits);
+		result.extract(index,"Status",(*this).Status);
+		result.extract(index,"StatusInfo",(*this).StatusInfo);
+		result.extract(index,"Supports16BitMode",(*this).Supports16BitMode);
+		result.extract(index,"SupportsDTRDSR",(*this).SupportsDTRDSR);
+		result.extract(index,"SupportsElapsedTimeouts",(*this).SupportsElapsedTimeouts);
+		result.extract(index,"SupportsIntTimeouts",(*this).SupportsIntTimeouts);
+		result.extract(index,"SupportsParityCheck",(*this).SupportsParityCheck);
+		result.extract(index,"SupportsRLSD",(*this).SupportsRLSD);
+		result.extract(index,"SupportsRTSCTS",(*this).SupportsRTSCTS);
+		result.extract(index,"SupportsSpecialCharacters",(*this).SupportsSpecialCharacters);
+		result.extract(index,"SupportsXOnXOff",(*this).SupportsXOnXOff);
+		result.extract(index,"SupportsXOnXOffSet",(*this).SupportsXOnXOffSet);
+		result.extract(index,"SystemCreationClassName",(*this).SystemCreationClassName);
+		result.extract(index,"SystemName",(*this).SystemName);
+		result.extract(index,"TimeOfLastReset",(*this).TimeOfLastReset);
 	}
 
 	static std::string getWmiClassName()
@@ -679,8 +678,9 @@ struct Win32_SerialPort
 	std::string TimeOfLastReset;
 
 }; //end Win32_SerialPort
-struct SoftwareLicensingService{
 
+struct SoftwareLicensingService
+{
 	SoftwareLicensingService():
 	ClientMachineID(),
 	DiscoveredKeyManagementServiceMachineIpAddress(),
@@ -721,6 +721,7 @@ struct SoftwareLicensingService{
 	VLActivationInterval(),
 	VLRenewalInterval()
 	{}
+
 	void setProperties(const WmiResult &result, std::size_t index)
 	{
 		result.extract(index, "ClientMachineID", (*this).ClientMachineID);
@@ -805,6 +806,109 @@ struct SoftwareLicensingService{
 	int VLActivationInterval ;
 	int VLRenewalInterval ;
 };
+
+struct Win32_LogicalDisk
+{
+	Win32_LogicalDisk() :
+		Access(), Availability(), BlockSize(), Caption(), Compressed(), ConfigManagerErrorCode(),
+		ConfigManagerUserConfig(), CreationClassName(), Description(), DeviceID(), DriveType(),
+		ErrorCleared(), ErrorDescription(), ErrorMethodology(), FileSystem(), FreeSpace(), InstallDate(),
+		LastErrorCode(), MaximumComponentLength(), MediaType(), Name(), NumberOfBlocks(), PNPDeviceID(),
+		PowerManagementCapabilities(), PowerManagementSupported(), ProviderName(), Purpose(), QuotasDisabled(),
+		QuotasIncomplete(), QuotasRebuilding(), Size(), Status(), StatusInfo(), SupportsDiskQuotas(),
+		SupportsFileBasedCompression(), SystemCreationClassName(), SystemName(), VolumeDirty(),
+		VolumeName(), VolumeSerialNumber()
+	{}
+
+	void setProperties(const WmiResult& result, std::size_t index)
+	{
+		result.extract(index, "Access", (*this).Access);
+		result.extract(index, "Availability", (*this).Availability);
+		result.extract(index, "BlockSize", (*this).BlockSize);
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "Compressed", (*this).Compressed);
+		result.extract(index, "ConfigManagerErrorCode", (*this).ConfigManagerErrorCode);
+		result.extract(index, "ConfigManagerUserConfig", (*this).ConfigManagerUserConfig);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "DeviceID", (*this).DeviceID);
+		result.extract(index, "DriveType", (*this).DriveType);
+		result.extract(index, "ErrorCleared", (*this).ErrorCleared);
+		result.extract(index, "ErrorDescription", (*this).ErrorDescription);
+		result.extract(index, "ErrorMethodology", (*this).ErrorMethodology);
+		result.extract(index, "FileSystem", (*this).FileSystem);
+		result.extract(index, "FreeSpace", (*this).FreeSpace);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "LastErrorCode", (*this).LastErrorCode);
+		result.extract(index, "MaximumComponentLength", (*this).MaximumComponentLength);
+		result.extract(index, "MediaType", (*this).MediaType);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "NumberOfBlocks", (*this).NumberOfBlocks);
+		result.extract(index, "PNPDeviceID", (*this).PNPDeviceID);
+		result.extract(index, "PowerManagementCapabilities", (*this).PowerManagementCapabilities);
+		result.extract(index, "PowerManagementSupported", (*this).PowerManagementSupported);
+		result.extract(index, "ProviderName", (*this).ProviderName);
+		result.extract(index, "Purpose", (*this).Purpose);
+		result.extract(index, "QuotasDisabled", (*this).QuotasDisabled);
+		result.extract(index, "QuotasIncomplete", (*this).QuotasIncomplete);
+		result.extract(index, "QuotasRebuilding", (*this).QuotasRebuilding);
+		result.extract(index, "Size", (*this).Size);
+		result.extract(index, "StatusInfo", (*this).StatusInfo);
+		result.extract(index, "SupportsDiskQuotas", (*this).SupportsDiskQuotas);
+		result.extract(index, "SupportsFileBasedCompression", (*this).SupportsFileBasedCompression);
+		result.extract(index, "SystemCreationClassName", (*this).SystemCreationClassName);
+		result.extract(index, "SystemName", (*this).SystemName);
+		result.extract(index, "VolumeDirty", (*this).VolumeDirty);
+		result.extract(index, "VolumeName", (*this).VolumeName);
+		result.extract(index, "VolumeSerialNumber", (*this).VolumeSerialNumber);
+	}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_LogicalDisk";
+	}
+
+	int Access;
+	int Availability;
+	std::string BlockSize;
+	std::string Caption;
+	bool Compressed;
+	int ConfigManagerErrorCode;
+	bool ConfigManagerUserConfig;
+	std::string CreationClassName;
+	std::string Description;
+	std::string DeviceID;
+	int DriveType;
+	bool ErrorCleared;
+	std::string ErrorDescription;
+	std::string ErrorMethodology;
+	std::string FileSystem;
+	std::string FreeSpace;
+	std::string InstallDate;
+	int LastErrorCode;
+	int MaximumComponentLength;
+	int MediaType;
+	std::string Name;
+	std::string NumberOfBlocks;
+	std::string PNPDeviceID;
+	std::string PowerManagementCapabilities;
+	std::string PowerManagementSupported;
+	std::string ProviderName;
+	std::string Purpose;
+	bool QuotasDisabled;
+	bool QuotasIncomplete;
+	bool QuotasRebuilding;
+	std::string Size;
+	std::string Status;
+	std::string StatusInfo;
+	bool SupportsDiskQuotas;
+	bool SupportsFileBasedCompression;
+	std::string SystemCreationClassName;
+	std::string SystemName;
+	bool VolumeDirty;
+	std::string VolumeName;
+	std::string VolumeSerialNumber;
+}; //end Win32_LogicalDisk
 
 struct Win32_OperatingSystem
 {
