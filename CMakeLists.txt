@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project (Wmi)
 set (CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -c -O3 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -fipa-pure-const ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -c -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64")
 
-
-#file(GLOB SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp )
 set(WMISOURCES ${PROJECT_SOURCE_DIR}/src/wmi.cpp  ${PROJECT_SOURCE_DIR}/src/wmiresult.cpp) 
 include_directories(${TOTAL_INCLUDES}  ${PROJECT_SOURCE_DIR}/include)
 
