@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.6...3.20)
 project (Wmi)
 set (CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -c -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64")
