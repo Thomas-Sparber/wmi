@@ -1094,6 +1094,83 @@ struct Win32_OperatingSystem
 	std::string Version ;
 	std::string WindowsDirectory ;
 };
+struct Win32_BaseBoard
+{
+	Win32_BaseBoard() :
+		Caption(), ConfigOptions(), CreationClassName(), Depth(), Description(), Height(), HostingBoard(), HotSwappable(), InstallDate(),
+		Manufacturer(), Model(), Name(), OtherIdentifyingInfo(), PoweredOn(), Product(), Removable(), Replaceable(), RequirementsDescription(),
+		RequiresDaughterBoard(), SerialNumber(), SKU(), SlotLayout(), SpecialRequirements(), Status(), Tag(), Version(), Weight(), Width()
+	{}
+
+	void setProperties(const WmiResult& result, std::size_t index)
+	{
+		//vscode was a great help with search(.+?), 
+		//and replace result.extract(index, "$1", (*this).$1);
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "ConfigOptions", (*this).ConfigOptions);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "Depth", (*this).Depth);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "Height", (*this).Height);
+		result.extract(index, "HostingBoard", (*this).HostingBoard);
+		result.extract(index, "HotSwappable", (*this).HotSwappable);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "Manufacturer", (*this).Manufacturer);
+		result.extract(index, "Model", (*this).Model);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "OtherIdentifyingInfo", (*this).OtherIdentifyingInfo);
+		result.extract(index, "PoweredOn", (*this).PoweredOn);
+		result.extract(index, "Product", (*this).Product);
+		result.extract(index, "Removable", (*this).Removable);
+		result.extract(index, "Replaceable", (*this).Replaceable);
+		result.extract(index, "RequirementsDescription", (*this).RequirementsDescription);
+		result.extract(index, "RequiresDaughterBoard", (*this).RequiresDaughterBoard);
+		result.extract(index, "SerialNumber", (*this).SerialNumber);
+		result.extract(index, "SKU", (*this).SKU);
+		result.extract(index, "SlotLayout", (*this).SlotLayout);
+		result.extract(index, "SpecialRequirements", (*this).SpecialRequirements);
+		result.extract(index, "Status", (*this).Status);
+		result.extract(index, "Tag", (*this).Tag);
+		result.extract(index, "Version", (*this).Version);
+		result.extract(index, "Weight", (*this).Weight);
+		result.extract(index, "Width", (*this).Width);
+	}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_BaseBoard";
+	}
+
+	std::string Caption;
+	std::string ConfigOptions;
+	std::string CreationClassName;
+	int Depth;
+	std::string Description;
+	int Height;
+	bool HostingBoard;
+	bool HotSwappable;
+	std::string InstallDate;
+	std::string Manufacturer;
+	std::string Model;
+	std::string Name;
+	std::string OtherIdentifyingInfo;
+	std::string PartNumber;
+	bool PoweredOn;
+	std::string Product;
+	bool Removable;
+	bool Replaceable;
+	std::string RequirementsDescription;
+	std::string RequiresDaughterBoard;
+	std::string SerialNumber;
+	std::string SKU;
+	std::string SlotLayout;
+	std::string SpecialRequirements;
+	std::string Status;
+	std::string Tag;
+	std::string Version;
+	int Weight;
+	int Width;
+}; //end class Win32_BaseBoard
 } //end namespace wmi
 
 #endif //WMICLASSES_HPP
