@@ -78,3 +78,23 @@ bool WmiResult::extract(std::size_t index, const string &name, uint64_t &out) co
 	out = strtoull(temp.c_str(), &test, 0);
 	return (test == temp.c_str() + temp.length());
 }
+
+bool WmiResult::extract(std::size_t index, const string &name, uint32_t &out) const
+{
+	string temp;
+	if(!extract(index, name, temp))return false;
+	
+	char *test;
+	out = (uint32_t)std::strtoul(temp.c_str(), &test, 0);
+	return (test == temp.c_str() + temp.length());
+}
+
+bool WmiResult::extract(std::size_t index, const string &name, uint16_t &out) const
+{
+	string temp;
+	if(!extract(index, name, temp))return false;
+	
+	char *test;
+	out = (uint16_t)std::strtoul(temp.c_str(), &test, 0);
+	return (test == temp.c_str() + temp.length());
+}

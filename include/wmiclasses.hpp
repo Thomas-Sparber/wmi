@@ -1094,6 +1094,152 @@ struct Win32_OperatingSystem
 	std::string Version ;
 	std::string WindowsDirectory ;
 };
+
+struct Win32_VideoController
+{
+	Win32_VideoController() :
+		AcceleratorCapabilities(),AdapterCompatibility(),AdapterDACType(),AdapterRAM(),Availability(),
+        CapabilityDescriptions(),Caption(),ColorTableEntries(),ConfigManagerErrorCode(),ConfigManagerUserConfig(),
+        CreationClassName(),CurrentBitsPerPixel(),CurrentHorizontalResolution(),CurrentNumberOfColors(),
+        CurrentNumberOfColumns(),CurrentNumberOfRows(),CurrentRefreshRate(),CurrentScanMode(),CurrentVerticalResolution(),
+        Description(),DeviceID(),DeviceSpecificPens(),DitherType(),DriverDate(),DriverVersion(),ErrorCleared(),
+        ErrorDescription(),ICMIntent(),ICMMethod(),InfFilename(),InfSection(),InstallDate(),InstalledDisplayDrivers(),
+        LastErrorCode(),MaxMemorySupported(),MaxNumberControlled(),MaxRefreshRate(),MinRefreshRate(),Monochrome(),Name(),
+        NumberOfColorPlanes(),NumberOfVideoPages(),PNPDeviceID(),PowerManagementCapabilities(),PowerManagementSupported(),
+        ProtocolSupported(),ReservedSystemPaletteEntries(),SpecificationVersion(),Status(),StatusInfo(),
+        SystemCreationClassName(),SystemName(),SystemPaletteEntries(),TimeOfLastReset(),VideoArchitecture(),
+        VideoMemoryType(),VideoMode(),VideoModeDescription(),VideoProcessor()
+	{}
+
+	void setProperties(const WmiResult& result, std::size_t index)
+	{
+		result.extract(index, "AcceleratorCapabilities", (*this).AcceleratorCapabilities);
+		result.extract(index, "AdapterCompatibility", (*this).AdapterCompatibility);
+		result.extract(index, "AdapterDACType", (*this).AdapterDACType);
+		result.extract(index, "AdapterRAM", (*this).AdapterRAM);
+		result.extract(index, "Availability", (*this).Availability);
+		result.extract(index, "CapabilityDescriptions", (*this).CapabilityDescriptions);
+		result.extract(index, "Caption", (*this).Caption);
+		result.extract(index, "ColorTableEntries", (*this).ColorTableEntries);
+		result.extract(index, "ConfigManagerErrorCode", (*this).ConfigManagerErrorCode);
+		result.extract(index, "ConfigManagerUserConfig", (*this).ConfigManagerUserConfig);
+		result.extract(index, "CreationClassName", (*this).CreationClassName);
+		result.extract(index, "CurrentBitsPerPixel", (*this).CurrentBitsPerPixel);
+		result.extract(index, "CurrentHorizontalResolution", (*this).CurrentHorizontalResolution);
+		result.extract(index, "CurrentNumberOfColors", (*this).CurrentNumberOfColors);
+		result.extract(index, "CurrentNumberOfColumns", (*this).CurrentNumberOfColumns);
+		result.extract(index, "CurrentNumberOfRows", (*this).CurrentNumberOfRows);
+		result.extract(index, "CurrentRefreshRate", (*this).CurrentRefreshRate);
+		result.extract(index, "CurrentScanMode", (*this).CurrentScanMode);
+		result.extract(index, "CurrentVerticalResolution", (*this).CurrentVerticalResolution);
+		result.extract(index, "Description", (*this).Description);
+		result.extract(index, "DeviceID", (*this).DeviceID);
+		result.extract(index, "DeviceSpecificPens", (*this).DeviceSpecificPens);
+		result.extract(index, "DitherType", (*this).DitherType);
+		result.extract(index, "DriverDate", (*this).DriverDate);
+		result.extract(index, "DriverVersion", (*this).DriverVersion);
+		result.extract(index, "ErrorCleared", (*this).ErrorCleared);
+		result.extract(index, "ErrorDescription", (*this).ErrorDescription);
+		result.extract(index, "ICMIntent", (*this).ICMIntent);
+		result.extract(index, "ICMMethod", (*this).ICMMethod);
+		result.extract(index, "InfFilename", (*this).InfFilename);
+		result.extract(index, "InfSection", (*this).InfSection);
+		result.extract(index, "InstallDate", (*this).InstallDate);
+		result.extract(index, "InstalledDisplayDrivers", (*this).InstalledDisplayDrivers);
+		result.extract(index, "LastErrorCode", (*this).LastErrorCode);
+		result.extract(index, "MaxMemorySupported", (*this).MaxMemorySupported);
+		result.extract(index, "MaxNumberControlled", (*this).MaxNumberControlled);
+		result.extract(index, "MaxRefreshRate", (*this).MaxRefreshRate);
+		result.extract(index, "MinRefreshRate", (*this).MinRefreshRate);
+		result.extract(index, "Monochrome", (*this).Monochrome);
+		result.extract(index, "Name", (*this).Name);
+		result.extract(index, "NumberOfColorPlanes", (*this).NumberOfColorPlanes);
+		result.extract(index, "NumberOfVideoPages", (*this).NumberOfVideoPages);
+		result.extract(index, "PNPDeviceID", (*this).PNPDeviceID);
+		result.extract(index, "PowerManagementCapabilities", (*this).PowerManagementCapabilities);
+		result.extract(index, "PowerManagementSupported", (*this).PowerManagementSupported);
+		result.extract(index, "ProtocolSupported", (*this).ProtocolSupported);
+		result.extract(index, "ReservedSystemPaletteEntries", (*this).ReservedSystemPaletteEntries);
+		result.extract(index, "SpecificationVersion", (*this).SpecificationVersion);
+		result.extract(index, "Status", (*this).Status);
+		result.extract(index, "StatusInfo", (*this).StatusInfo);
+		result.extract(index, "SystemCreationClassName", (*this).SystemCreationClassName);
+		result.extract(index, "SystemName", (*this).SystemName);
+		result.extract(index, "SystemPaletteEntries", (*this).SystemPaletteEntries);
+		result.extract(index, "TimeOfLastReset", (*this).TimeOfLastReset);
+		result.extract(index, "VideoArchitecture", (*this).VideoArchitecture);
+		result.extract(index, "VideoMemoryType", (*this).VideoMemoryType);
+		result.extract(index, "VideoMode", (*this).VideoMode);
+		result.extract(index, "VideoModeDescription", (*this).VideoModeDescription);
+		result.extract(index, "VideoProcessor", (*this).VideoProcessor);
+	}
+
+	static std::string getWmiClassName()
+	{
+		return "Win32_VideoController";
+	}
+
+	std::string   AcceleratorCapabilities;
+	std::string   AdapterCompatibility;
+	std::string   AdapterDACType;
+	std::uint32_t AdapterRAM;
+	std::uint16_t Availability;
+	std::string   CapabilityDescriptions;
+	std::string   Caption;
+	std::uint32_t ColorTableEntries;
+	std::uint32_t ConfigManagerErrorCode;
+	bool          ConfigManagerUserConfig;
+	std::string   CreationClassName;
+	std::uint32_t CurrentBitsPerPixel;
+	std::uint32_t CurrentHorizontalResolution;
+	std::uint64_t CurrentNumberOfColors;
+	std::uint32_t CurrentNumberOfColumns;
+	std::uint32_t CurrentNumberOfRows;
+	std::uint32_t CurrentRefreshRate;
+	std::uint16_t CurrentScanMode;
+	std::uint32_t CurrentVerticalResolution;
+	std::string   Description;
+	std::string   DeviceID;
+	std::uint32_t DeviceSpecificPens;
+	std::uint32_t DitherType;
+	std::string   DriverDate;
+	std::string   DriverVersion;
+	bool          ErrorCleared;
+	std::string   ErrorDescription;
+	std::uint32_t ICMIntent;
+	std::uint32_t ICMMethod;
+	std::string   InfFilename;
+	std::string   InfSection;
+	std::string   InstallDate;
+	std::string   InstalledDisplayDrivers;
+	std::uint32_t LastErrorCode;
+	std::uint32_t MaxMemorySupported;
+	std::uint32_t MaxNumberControlled;
+	std::uint32_t MaxRefreshRate;
+	std::uint32_t MinRefreshRate;
+	bool          Monochrome;
+	std::string   Name;
+	std::uint16_t NumberOfColorPlanes;
+	std::uint32_t NumberOfVideoPages;
+	std::string   PNPDeviceID;
+	std::string   PowerManagementCapabilities;
+	bool          PowerManagementSupported;
+	std::uint16_t ProtocolSupported;
+	std::uint32_t ReservedSystemPaletteEntries;
+	std::uint32_t SpecificationVersion;
+	std::string   Status;
+	std::uint16_t StatusInfo;
+	std::string   SystemCreationClassName;
+	std::string   SystemName;
+	std::uint32_t SystemPaletteEntries;
+	std::string   TimeOfLastReset;
+	std::uint16_t VideoArchitecture;
+	std::uint16_t VideoMemoryType;
+	std::uint16_t VideoMode;
+	std::string   VideoModeDescription;
+	std::string   VideoProcessor;
+};
+
 struct Win32_BaseBoard
 {
 	Win32_BaseBoard() :
@@ -1171,6 +1317,7 @@ struct Win32_BaseBoard
 	int Weight;
 	int Width;
 }; //end class Win32_BaseBoard
+
 } //end namespace wmi
 
 #endif //WMICLASSES_HPP
