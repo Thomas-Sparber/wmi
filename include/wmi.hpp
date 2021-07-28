@@ -22,7 +22,7 @@ namespace Wmi
 	{
 		WmiResult result;
 		query(q, result);
-		return std::move(result);
+		return result;
 	}
 
 	template <class WmiClass>
@@ -39,7 +39,7 @@ namespace Wmi
 	{
 		WmiClass temp;
 		retrieveWmi(temp);
-		return std::move(temp);
+		return temp;
 	}
 
 	template <class WmiClass>
@@ -64,7 +64,7 @@ namespace Wmi
 		std::vector<WmiClass> ret;
 		retrieveAllWmi(ret);
 
-		return std::move(ret);
+		return ret;
 	}
 
 }; //end namespace Wmi

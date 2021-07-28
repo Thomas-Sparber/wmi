@@ -352,7 +352,7 @@ struct Win32_Processor
 		L2CacheSize(), L2CacheSpeed(), L3CacheSize(), L3CacheSpeed(), LastErrorCode(), Level(), LoadPercentage(),
 		Manufacturer(), MaxClockSpeed(), Name(), NumberOfCores(), NumberOfEnabledCore(), NumberOfLogicalProcessors(),
 		OtherFamilyDescription(), PartNumber(), PNPDeviceID(), PowerManagementCapabilities(), PowerManagementSupported(), ProcessorId(),
-		ProcessorType(), Revision(), SecondLevelAddressTranslationExtensions(), SerialNumber(), SocketDesignation(),
+		ProcessorType(), Revision(), Role(), SecondLevelAddressTranslationExtensions(), SerialNumber(), SocketDesignation(),
 		Status(), StatusInfo(), Stepping(), SystemCreationClassName(), SystemName(), ThreadCount(), UniqueId(),
 		UpgradeMethod(), Version(), VirtualizationFirmwareEnabled(), VMMonitorModeExtensions(), VoltageCaps()
 	{}
@@ -1244,7 +1244,7 @@ struct Win32_BaseBoard
 {
 	Win32_BaseBoard() :
 		Caption(), ConfigOptions(), CreationClassName(), Depth(), Description(), Height(), HostingBoard(), HotSwappable(), InstallDate(),
-		Manufacturer(), Model(), Name(), OtherIdentifyingInfo(), PoweredOn(), Product(), Removable(), Replaceable(), RequirementsDescription(),
+		Manufacturer(), Model(), Name(), OtherIdentifyingInfo(), PartNumber(), PoweredOn(), Product(), Removable(), Replaceable(), RequirementsDescription(),
 		RequiresDaughterBoard(), SerialNumber(), SKU(), SlotLayout(), SpecialRequirements(), Status(), Tag(), Version(), Weight(), Width()
 	{}
 

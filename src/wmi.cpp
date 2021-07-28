@@ -47,14 +47,14 @@ IWbemServices* connect(IWbemLocator *pLocator)
 	{
 		switch(hr)
 		{
-			case WBEM_E_ACCESS_DENIED:		throw WmiException("Error initializing IWbemServices: WBEM_E_ACCESS_DENIED", hr);
-			case WBEM_E_FAILED:				throw WmiException("Error initializing IWbemServices: WBEM_E_FAILED", hr);
-			case WBEM_E_INVALID_NAMESPACE:	throw WmiException("Error initializing IWbemServices: WBEM_E_INVALID_NAMESPACE", hr);
-			case WBEM_E_INVALID_PARAMETER:	throw WmiException("Error initializing IWbemServices: WBEM_E_INVALID_PARAMETER", hr);
-			case WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error initializing IWbemServices: WBEM_E_OUT_OF_MEMORY", hr);
-			case WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error initializing IWbemServices: WBEM_E_TRANSPORT_FAILURE", hr);
-			case WBEM_E_LOCAL_CREDENTIALS:	throw WmiException("Error initializing IWbemServices: WBEM_E_LOCAL_CREDENTIALS", hr);
-			default:						throw WmiException("Error initializing IWbemServices: Unknown Error", hr);
+			case (HRESULT)WBEM_E_ACCESS_DENIED:		throw WmiException("Error initializing IWbemServices: WBEM_E_ACCESS_DENIED", hr);
+			case (HRESULT)WBEM_E_FAILED:			throw WmiException("Error initializing IWbemServices: WBEM_E_FAILED", hr);
+			case (HRESULT)WBEM_E_INVALID_NAMESPACE:	throw WmiException("Error initializing IWbemServices: WBEM_E_INVALID_NAMESPACE", hr);
+			case (HRESULT)WBEM_E_INVALID_PARAMETER:	throw WmiException("Error initializing IWbemServices: WBEM_E_INVALID_PARAMETER", hr);
+			case (HRESULT)WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error initializing IWbemServices: WBEM_E_OUT_OF_MEMORY", hr);
+			case (HRESULT)WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error initializing IWbemServices: WBEM_E_TRANSPORT_FAILURE", hr);
+			case (HRESULT)WBEM_E_LOCAL_CREDENTIALS:	throw WmiException("Error initializing IWbemServices: WBEM_E_LOCAL_CREDENTIALS", hr);
+			default:								throw WmiException("Error initializing IWbemServices: Unknown Error", hr);
 		}
 	}
 
@@ -89,14 +89,14 @@ IEnumWbemClassObject* execute(IWbemServices *pServices, const string &q)
 	{
 		switch(hr)
 		{
-			case WBEM_E_ACCESS_DENIED:		throw WmiException("Error executing query: WBEM_E_ACCESS_DENIED", hr);
-			case WBEM_E_FAILED:				throw WmiException("Error executing query: WBEM_E_FAILED", hr);
-			case WBEM_E_INVALID_CLASS:		throw WmiException("Error executing query: WBEM_E_INVALID_CLASS", hr);
-			case WBEM_E_INVALID_PARAMETER:	throw WmiException("Error executing query: WBEM_E_INVALID_PARAMETER", hr);
-			case WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error executing query: WBEM_E_OUT_OF_MEMORY", hr);
-			case WBEM_E_SHUTTING_DOWN:		throw WmiException("Error executing query: WBEM_E_SHUTTING_DOWN", hr);
-			case WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error executing query: WBEM_E_TRANSPORT_FAILURE", hr);
-			default:						throw WmiException("Error executing query: Unknown Error", hr);
+			case (HRESULT)WBEM_E_ACCESS_DENIED:		throw WmiException("Error executing query: WBEM_E_ACCESS_DENIED", hr);
+			case (HRESULT)WBEM_E_FAILED:			throw WmiException("Error executing query: WBEM_E_FAILED", hr);
+			case (HRESULT)WBEM_E_INVALID_CLASS:		throw WmiException("Error executing query: WBEM_E_INVALID_CLASS", hr);
+			case (HRESULT)WBEM_E_INVALID_PARAMETER:	throw WmiException("Error executing query: WBEM_E_INVALID_PARAMETER", hr);
+			case (HRESULT)WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error executing query: WBEM_E_OUT_OF_MEMORY", hr);
+			case (HRESULT)WBEM_E_SHUTTING_DOWN:		throw WmiException("Error executing query: WBEM_E_SHUTTING_DOWN", hr);
+			case (HRESULT)WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error executing query: WBEM_E_TRANSPORT_FAILURE", hr);
+			default:								throw WmiException("Error executing query: Unknown Error", hr);
 		}
 	}
 
@@ -120,12 +120,12 @@ void foreachObject(IEnumWbemClassObject *pClassObject, function<bool(IWbemClassO
 			switch(hr)
 			{
 				case WBEM_S_FALSE: break;
-				case WBEM_E_INVALID_PARAMETER:	throw WmiException("Error getting next element: WBEM_E_INVALID_PARAMETER", hr);
-				case WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error getting next element: WBEM_E_OUT_OF_MEMORY", hr);
-				case WBEM_E_UNEXPECTED:			throw WmiException("Error getting next element: WBEM_E_UNEXPECTED", hr);
-				case WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error getting next element: WBEM_E_TRANSPORT_FAILURE", hr);
-				case WBEM_S_TIMEDOUT:			throw WmiException("Error getting next element: WBEM_S_TIMEDOUT", hr);
-				default:						throw WmiException("Error getting next element: Unknown Error", hr);
+				case (HRESULT)WBEM_E_INVALID_PARAMETER:	throw WmiException("Error getting next element: WBEM_E_INVALID_PARAMETER", hr);
+				case (HRESULT)WBEM_E_OUT_OF_MEMORY:		throw WmiException("Error getting next element: WBEM_E_OUT_OF_MEMORY", hr);
+				case (HRESULT)WBEM_E_UNEXPECTED:		throw WmiException("Error getting next element: WBEM_E_UNEXPECTED", hr);
+				case (HRESULT)WBEM_E_TRANSPORT_FAILURE:	throw WmiException("Error getting next element: WBEM_E_TRANSPORT_FAILURE", hr);
+				case WBEM_S_TIMEDOUT:					throw WmiException("Error getting next element: WBEM_S_TIMEDOUT", hr);
+				default:								throw WmiException("Error getting next element: Unknown Error", hr);
 			}
 		}
 
@@ -264,10 +264,10 @@ void foreachProperty(IWbemClassObject *object, function<bool(const wstring&, con
     {
 		switch(hr)
 		{
-			case WBEM_E_FAILED:				throw WmiException("Could not get properties: WBEM_E_FAILED", hr);
-			case WBEM_E_INVALID_PARAMETER:	throw WmiException("Could not get properties: WBEM_E_INVALID_PARAMETER", hr);
-			case WBEM_E_OUT_OF_MEMORY:		throw WmiException("Could not get properties: WBEM_E_OUT_OF_MEMORY", hr);
-			default:						throw WmiException("Could not get properties: WBEM_E_FAILED", hr);
+			case (HRESULT)WBEM_E_FAILED:			throw WmiException("Could not get properties: WBEM_E_FAILED", hr);
+			case (HRESULT)WBEM_E_INVALID_PARAMETER:	throw WmiException("Could not get properties: WBEM_E_INVALID_PARAMETER", hr);
+			case (HRESULT)WBEM_E_OUT_OF_MEMORY:		throw WmiException("Could not get properties: WBEM_E_OUT_OF_MEMORY", hr);
+			default:								throw WmiException("Could not get properties: WBEM_E_FAILED", hr);
 		}
     }
 
@@ -298,11 +298,11 @@ void foreachProperty(IWbemClassObject *object, function<bool(const wstring&, con
 		{
 			switch(hr)
 			{
-				case WBEM_E_FAILED:				throw WmiException("Could not get property: WBEM_E_FAILED", hr);
-				case WBEM_E_INVALID_PARAMETER:	throw WmiException("Could not get property: WBEM_E_INVALID_PARAMETER", hr);
-				case WBEM_E_NOT_FOUND:			throw WmiException("Could not get property: WBEM_E_NOT_FOUND", hr);
-				case WBEM_E_OUT_OF_MEMORY:		throw WmiException("Could not get property: WBEM_E_OUT_OF_MEMORY", hr);
-				default:						throw WmiException("Could not get property: Unknown Error", hr);
+				case (HRESULT)WBEM_E_FAILED:			throw WmiException("Could not get property: WBEM_E_FAILED", hr);
+				case (HRESULT)WBEM_E_INVALID_PARAMETER:	throw WmiException("Could not get property: WBEM_E_INVALID_PARAMETER", hr);
+				case (HRESULT)WBEM_E_NOT_FOUND:			throw WmiException("Could not get property: WBEM_E_NOT_FOUND", hr);
+				case (HRESULT)WBEM_E_OUT_OF_MEMORY:		throw WmiException("Could not get property: WBEM_E_OUT_OF_MEMORY", hr);
+				default:								throw WmiException("Could not get property: Unknown Error", hr);
 			}
 		}
 		
