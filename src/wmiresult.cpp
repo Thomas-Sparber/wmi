@@ -6,12 +6,16 @@
  **/
 
 #include <algorithm>
+#include <codecvt>
+#include <locale>
 
 #include <wmiresult.hpp>
 
+using std::codecvt_utf8;
 using std::string;
 using std::transform;
 using std::wstring;
+using std::wstring_convert;
 
 using namespace Wmi;
 
@@ -42,7 +46,8 @@ bool WmiResult::extract(std::size_t index, const string &name, string &out) cons
 	wstring temp;
 	if(!extract(index, name, temp))return false;
 
-	out = string(temp.cbegin(), temp.cend());
+	wstring_convert<codecvt_utf8<wchar_t>> myconv;
+	out = myconv.to_bytes(temp);
 	return true;
 }
 
