@@ -32,8 +32,15 @@ int main(int /*argc*/, char */*args*/[])
 		cout<<endl;
                 cout << "Machine Id:" << liscense.ClientMachineID << " Kmsid:" << liscense.KeyManagementServiceProductKeyID << std::endl;
                 cout<<"Installed services:"<<endl;
-		
+
+		// gets all rows and all columns
 		for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())
+		{
+			cout<<service.Caption<<" started:"<<service.Started<<" state:"<<service.State<<  endl;
+		}
+		
+		// gets all rows and only specified columns(better performance)
+		for(const Win32_Service &service : retrieveAllWmi<Win32_Service>("Caption,Started,State"))
 		{
 			cout<<service.Caption<<" started:"<<service.Started<<" state:"<<service.State<<  endl;
 		}
