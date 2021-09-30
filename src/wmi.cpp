@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <comdef.h>
 #include <functional>
-#include <WbemCli.h>
+#include <wbemcli.h>
 #include <windows.h>
 
 #include <wmi.hpp>
