@@ -1,8 +1,8 @@
 // Written by: Diaa Sami
 
-#include <Windows.h>
+#include <windows.h>
 #include <stdlib.h>
-#include <StrSafe.h>
+#include <strsafe.h>
 
 void __stdcall _com_issue_error(HRESULT hr)
 {
