@@ -184,7 +184,7 @@ struct Win32_ComputerSystem
 	int ResetCapability;
 	int ResetCount;
 	int ResetLimit;
-	std::string Roles;
+	std::vector<std::string> Roles;
 	std::string Status;
 	std::string SupportContactDescription;
 	std::string SystemStartupDelay;

@@ -14,6 +14,7 @@
 using std::cerr;
 using std::cout;
 using std::endl;
+using std::string;
 using std::wcout;
 
 using namespace Wmi;
@@ -26,12 +27,17 @@ int main(int /*argc*/, char */*args*/[])
 		SoftwareLicensingService liscense  = retrieveWmi<SoftwareLicensingService>();
 		Win32_OperatingSystem os_info  = retrieveWmi<Win32_OperatingSystem>();
 
-		cout<<"Computername: "<<computer.Name<<" Domaind:"<<computer.Domain<<endl;
+		cout<<"Computername: "<<computer.Name<<" Domain: "<<computer.Domain<<endl;
 		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
 		cout<<"Architecture: "<<os_info.OSArchitecture<<std::endl;
+		cout<<"Roles: "<<endl;
+		for(const string role : computer.Roles)
+		{
+			cout<<" - "<<role<<std::endl;
+		}
 		cout<<endl;
-                cout << "Machine Id:" << liscense.ClientMachineID << " Kmsid:" << liscense.KeyManagementServiceProductKeyID << std::endl;
-                cout<<"Installed services:"<<endl;
+		cout<<"Machine Id:"<<liscense.ClientMachineID<<" Kmsid:"<<liscense.KeyManagementServiceProductKeyID<<std::endl;
+		cout<<"Installed services:"<<endl;
 
 		// gets all rows and all columns
 		for(const Win32_Service &service : retrieveAllWmi<Win32_Service>())

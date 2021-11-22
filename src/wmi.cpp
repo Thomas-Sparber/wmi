@@ -20,6 +20,21 @@ using std::wstringstream;
 
 using namespace Wmi;
 
+wstring escape(wstring str)
+{
+	size_t start_pos = 0;
+	const wstring from = L"\"";
+	const wstring to = L"\\\"";
+
+    while((start_pos = str.find(from, start_pos)) != string::npos)
+	{
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length();
+    }
+
+    return str;
+}
+
 IWbemLocator* createWbemLocator()
 {
 	IWbemLocator *pLocator = nullptr;
@@ -196,6 +211,52 @@ wstring convertVariant(const VARIANT &value)
 			break;
 		case VT_VOID:
 			break;
+		case VT_ARRAY|VT_BSTR:
+		{
+			long lLower, lUpper;
+			SafeArrayGetLBound(value.parray, 1, &lLower);
+			SafeArrayGetUBound(value.parray, 1, &lUpper);
+
+			ss<<"[";
+			for(long i = lLower; i <= lUpper; ++i)
+			{
+				BSTR inner;
+				HRESULT hr = SafeArrayGetElement(value.parray, &i, &inner);
+
+				if(!FAILED(hr))
+				{
+					ss<<"\""<<escape(inner)<<"\"";
+				}
+
+				if(i != lUpper)ss<<",";
+			}
+			ss<<"]";
+
+			break;
+		}
+		case VT_ARRAY|VT_I4:
+		{
+			long lLower, lUpper;
+			SafeArrayGetLBound(value.parray, 1, &lLower);
+			SafeArrayGetUBound(value.parray, 1, &lUpper);
+
+			ss<<"[";
+			for(long i = lLower; i <= lUpper; ++i)
+			{
+				ULONG inner;
+				HRESULT hr = SafeArrayGetElement(value.parray, &i, &inner);
+
+				if(!FAILED(hr))
+				{
+					ss<<inner;
+				}
+
+				if(i != lUpper)ss<<",";
+			}
+			ss<<"]";
+
+			break;
+		}
 		
 		
 		case VT_CY:				throw WmiException("Data type not yet supported: VT_CY", value.vt);
@@ -214,37 +275,12 @@ wstring convertVariant(const VARIANT &value)
 		case VT_UINT_PTR:		throw WmiException("Data type not yet supported: VT_UINT_PTR", value.vt);
 		case VT_LPSTR:			throw WmiException("Data type not yet supported: VT_LPSTR", value.vt);
 		case VT_LPWSTR:			throw WmiException("Data type not yet supported: VT_LPWSTR", value.vt);
+		case VT_BYREF:
+			//for local use only
+			break;
 		default:
 			handled = false;
 			break;
-	}
-
-	if((value.vt & VT_ARRAY) != 0)
-	{
-		long lLower, lUpper;
-		SafeArrayGetLBound(value.parray, 1, &lLower);
-		SafeArrayGetUBound(value.parray, 1, &lUpper);
-		
-		ss<<"[";
-		for(long i = lLower; i <= lUpper; ++i)
-		{
-			/*VARIANT inner;
-			HRESULT hr = SafeArrayGetElement(value.parray, &i, &inner);
-			inner.vt = value.vt ^ VT_ARRAY;
-
-			if(!FAILED(hr))
-			{
-				ss<<convertVariant(inner);
-			}*/
-
-			if(i != lUpper)ss<<",";
-		}
-		ss<<"]";
-		handled = true;
-	}
-	else if((value.vt & VT_BYREF) != 0)
-	{
-		handled = true;
 	}
 	
 	if(!handled)
