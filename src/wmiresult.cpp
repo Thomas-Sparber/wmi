@@ -154,6 +154,16 @@ bool WmiResult::extract(std::size_t index, const string &name, uint16_t &out) co
 	return (test == temp.c_str() + temp.length());
 }
 
+bool WmiResult::extract(std::size_t index, const string &name, uint8_t &out) const
+{
+	string temp;
+	if(!extract(index, name, temp))return false;
+	
+	char *test;
+	out = (uint8_t)std::strtoul(temp.c_str(), &test, 0);
+	return (test == temp.c_str() + temp.length());
+}
+
 bool WmiResult::extract(std::size_t index, const string &name, vector<wstring> &out) const
 {
 	wstring temp;
@@ -224,7 +234,7 @@ bool WmiResult::extract(std::size_t index, const string &name, vector<uint64_t> 
 	{
 		char *test;
 		out[i] = strtoull(tokens[i].c_str(), &test, 0);
-		return (test == tokens[i].c_str() + tokens[i].length());
+		if(test != tokens[i].c_str() + tokens[i].length()) return false;
 	}
 
 	return true;
@@ -240,7 +250,7 @@ bool WmiResult::extract(std::size_t index, const string &name, vector<uint32_t> 
 	{
 		char *test;
 		out[i] = (uint32_t)strtoul(tokens[i].c_str(), &test, 0);
-		return (test == tokens[i].c_str() + tokens[i].length());
+		if (test != tokens[i].c_str() + tokens[i].length()) return false;
 	}
 
 	return true;
@@ -256,7 +266,23 @@ bool WmiResult::extract(std::size_t index, const string &name, vector<uint16_t> 
 	{
 		char *test;
 		out[i] = (uint16_t)strtoul(tokens[i].c_str(), &test, 0);
-		return (test == tokens[i].c_str() + tokens[i].length());
+		if (test != tokens[i].c_str() + tokens[i].length()) return false;
+	}
+
+	return true;
+}
+
+bool WmiResult::extract(std::size_t index, const string &name, vector<uint8_t> &out) const
+{
+	vector<string> tokens;
+	if(!extract(index, name, tokens))return false;
+
+	out.resize(tokens.size());
+	for(std::size_t i = 0; i < tokens.size(); ++i)
+	{
+		char *test;
+		out[i] = (uint8_t)strtoul(tokens[i].c_str(), &test, 0);
+		if (test != tokens[i].c_str() + tokens[i].length()) return false;
 	}
 
 	return true;
