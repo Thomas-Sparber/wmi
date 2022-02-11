@@ -54,10 +54,10 @@ IWbemLocator* createWbemLocator()
 	return pLocator;
 }
 
-IWbemServices* connect(IWbemLocator *pLocator)
+IWbemServices* connect(IWbemLocator *pLocator, const std::string& path)
 {
 	IWbemServices *pServices;
-	HRESULT hr = pLocator->ConnectServer(_bstr_t("\\\\.\\root\\cimv2"), nullptr, nullptr, nullptr, 0, nullptr, nullptr, &pServices);
+	HRESULT hr = pLocator->ConnectServer(_bstr_t("\\\\.\\root\\") + _bstr_t(path.c_str()), nullptr, nullptr, nullptr, 0, nullptr, nullptr, &pServices);
 	if(FAILED(hr))
 	{
 		switch(hr)
@@ -328,6 +328,7 @@ void foreachProperty(IWbemClassObject *object, function<bool(const wstring&, con
 		}
 
 		VARIANT value;
+		VariantInit(&value);
 		hr = object->Get(propName, 0, &value, nullptr, nullptr);
 		
 		if(FAILED(hr))
@@ -347,7 +348,7 @@ void foreachProperty(IWbemClassObject *object, function<bool(const wstring&, con
 			cont = fn(propName, convertVariant(value));
 		} catch (const WmiException &e) {
 			wstring temp(propName);
-			throw WmiException(string("Can't convert parameter: ")+string(temp.begin(), temp.end())+": "+e.errorMessage, e.errorCode);
+			throw WmiException(string("Can't convert parameter: ") + string(temp.begin(), temp.end()) + ": " + e.errorMessage, e.errorCode);
 		}
 
 		VariantClear(&value);
@@ -358,9 +359,13 @@ void foreachProperty(IWbemClassObject *object, function<bool(const wstring&, con
     SafeArrayDestroy(psaNames);
 }
 
-void Wmi::query(const string &q, WmiResult &out)
+void Wmi::query(const string& q, const string& p, WmiResult &out)
 {
-	CoInitialize(nullptr);
+	HRESULT hr = CoInitialize(nullptr);
+	if (FAILED(hr))
+	{
+		throw WmiException("The COM library is already initialized on this thread", hr);
+	}
 
 	IWbemLocator *pLocator;
 	IWbemServices *pServices;
@@ -376,7 +381,7 @@ void Wmi::query(const string &q, WmiResult &out)
 
 	//Open connection to computer
 	try {
-		pServices = connect(pLocator);
+		pServices = connect(pLocator, p);
 	} catch (const WmiException &) {
 		pLocator->Release(); 
 		CoUninitialize();
