@@ -55,6 +55,7 @@ namespace Wmi
 		bool extract(std::size_t index, const std::string &name, int &out) const;
 		bool extract(std::size_t index, const std::string &name, bool &out) const;
 		bool extract(std::size_t index, const std::string &name, uint64_t &out) const;
+		bool extract(std::size_t index, const std::string &name, uint8_t &out) const;
 		bool extract(std::size_t index, const std::string &name, uint32_t &out) const;
 		bool extract(std::size_t index, const std::string &name, uint16_t &out) const;
 
@@ -65,6 +66,7 @@ namespace Wmi
 		bool extract(std::size_t index, const std::string &name, std::vector<uint64_t> &out) const;
 		bool extract(std::size_t index, const std::string &name, std::vector<uint32_t> &out) const;
 		bool extract(std::size_t index, const std::string &name, std::vector<uint16_t> &out) const;
+		bool extract(std::size_t index, const std::string &name, std::vector<uint8_t> &out) const;
 
 	private:
 		std::vector<std::map<std::wstring,std::wstring> > result;
