@@ -31,7 +31,7 @@ int main(int /*argc*/, char */*args*/[])
 		cout<<"Product: "<<product.Name<<" UUID:"<<product.UUID<<endl;
 		cout<<"Architecture: "<<os_info.OSArchitecture<<std::endl;
 		cout<<"Roles: "<<endl;
-		for(const string role : computer.Roles)
+		for(const string &role : computer.Roles)
 		{
 			cout<<" - "<<role<<std::endl;
 		}
@@ -51,6 +51,8 @@ int main(int /*argc*/, char */*args*/[])
 			cout<<service.Caption<<" started:"<<service.Started<<" state:"<<service.State<<  endl;
 		}
 
+		//Example for using a class that has a non default root (securitycenter2)
+		//This can be accombplished by implementing getWmiPath in the wmi class
 		cout << "Antivirus installed:" << endl;
 		for (const AntiVirusProduct& antivirus : retrieveAllWmi<AntiVirusProduct>())
 		{

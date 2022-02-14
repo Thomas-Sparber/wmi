@@ -75,6 +75,16 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
             return "Win32_MyCustomClass";
         }
     
+        /**
+          * This function can be optionally implemented if the wmi class
+		  * is not member of cimv2. In such a case, this function needs
+		  * to return the root for this WMI class
+         **/
+        /*static std::string getWmiClassName()
+        {
+            return "not cimv2";
+        }*/
+
         string name;
         //All the other properties you wish to read from WMI
     

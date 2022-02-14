@@ -15,16 +15,7 @@
 
 namespace Wmi
 {
-struct WmiBase
-{
-protected:
-	virtual void setProperties(const WmiResult& result, std::size_t index) {}
-	static const std::string getWmiClassName();
-public:
-	static const std::string getWmiPath() { return "cimv2"; }
-};
-
-struct Win32_ComputerSystemProduct : WmiBase
+struct Win32_ComputerSystemProduct
 {
 
  Win32_ComputerSystemProduct():
@@ -48,7 +39,7 @@ void setProperties(const WmiResult &result, std::size_t index){
 
 }
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_ComputerSystemProduct";
 	}
@@ -62,7 +53,7 @@ void setProperties(const WmiResult &result, std::size_t index){
     std::string Version;
 };
 
-struct Win32_ComputerSystem : WmiBase
+struct Win32_ComputerSystem
 {
 
 	Win32_ComputerSystem() :
@@ -142,7 +133,7 @@ struct Win32_ComputerSystem : WmiBase
 		result.extract(index,"Workgroup",(*this).Workgroup);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_ComputerSystem";
 	}
@@ -208,7 +199,7 @@ struct Win32_ComputerSystem : WmiBase
 
 }; //end struct Win32_ComputerSystem
 
-struct Win32_ParallelPort : WmiBase
+struct Win32_ParallelPort
 {
 
 	Win32_ParallelPort() :
@@ -252,7 +243,7 @@ struct Win32_ParallelPort : WmiBase
 		
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_ParallelPort";
 	}
@@ -286,7 +277,7 @@ struct Win32_ParallelPort : WmiBase
 
 }; //end class Win32_ParallelPort
 
-struct Win32_PhysicalMedia : WmiBase
+struct Win32_PhysicalMedia
 {
 	Win32_PhysicalMedia() :
 		Caption(), Description(), InstallDate(), Name(), Status(), CreationClassName(),
@@ -321,7 +312,7 @@ struct Win32_PhysicalMedia : WmiBase
 		result.extract(index, "CleanerMedia", (*this).CleanerMedia);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_PhysicalMedia";
 	}
@@ -352,7 +343,7 @@ struct Win32_PhysicalMedia : WmiBase
 
 }; //end class Win32_PhysicalMedia
 
-struct Win32_Processor : WmiBase
+struct Win32_Processor
 {
 	Win32_Processor() :
 		AddressWidth(), Architecture(), AssetTag(), Availability(), Caption(), Characteristics(), ConfigManagerErrorCode(),
@@ -428,7 +419,7 @@ struct Win32_Processor : WmiBase
 		result.extract(index, "VoltageCaps", (*this).VoltageCaps);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_Processor";
 	}
@@ -493,7 +484,7 @@ struct Win32_Processor : WmiBase
 
 }; //end class Win32_Processor
 
-struct Win32_Service : WmiBase
+struct Win32_Service
 {
 
 	Win32_Service() :
@@ -532,7 +523,7 @@ struct Win32_Service : WmiBase
 		result.extract(index, "WaitHint", (*this).WaitHint);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_Service";
 	}
@@ -565,7 +556,7 @@ struct Win32_Service : WmiBase
 
 }; //end Win32_Service
 
-struct Win32_SerialPort : WmiBase
+struct Win32_SerialPort
 {
 
 	Win32_SerialPort() :
@@ -633,7 +624,7 @@ struct Win32_SerialPort : WmiBase
 		result.extract(index,"TimeOfLastReset",(*this).TimeOfLastReset);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_SerialPort";
 	}
@@ -688,7 +679,7 @@ struct Win32_SerialPort : WmiBase
 
 }; //end Win32_SerialPort
 
-struct SoftwareLicensingService : WmiBase
+struct SoftwareLicensingService
 {
 	SoftwareLicensingService():
 	ClientMachineID(),
@@ -772,11 +763,10 @@ struct SoftwareLicensingService : WmiBase
 		result.extract(index, "VLActivationInterval", (*this).VLActivationInterval);
 		result.extract(index, "VLRenewalInterval", (*this).VLRenewalInterval);
 	}
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "SoftwareLicensingService";
 	}
-
 	std::string ClientMachineID;
 	std::string DiscoveredKeyManagementServiceMachineIpAddress;
 	std::string DiscoveredKeyManagementServiceMachineName;
@@ -817,7 +807,7 @@ struct SoftwareLicensingService : WmiBase
 	int VLRenewalInterval ;
 };
 
-struct Win32_LogicalDisk : WmiBase
+struct Win32_LogicalDisk
 {
 	Win32_LogicalDisk() :
 		Access(), Availability(), BlockSize(), Caption(), Compressed(), ConfigManagerErrorCode(),
@@ -873,7 +863,7 @@ struct Win32_LogicalDisk : WmiBase
 		result.extract(index, "VolumeSerialNumber", (*this).VolumeSerialNumber);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_LogicalDisk";
 	}
@@ -920,7 +910,7 @@ struct Win32_LogicalDisk : WmiBase
 	std::string VolumeSerialNumber;
 }; //end Win32_LogicalDisk
 
-struct Win32_OperatingSystem : WmiBase
+struct Win32_OperatingSystem
 {
 	Win32_OperatingSystem():
 	BootDevice(),
@@ -1041,11 +1031,10 @@ struct Win32_OperatingSystem : WmiBase
 		result.extract(index, "WindowsDirectory", (*this).WindowsDirectory);
 		 
 	}
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_OperatingSystem";
 	}
-
 	std::string BootDevice ;
 	std::string BuildNumber ;
 	std::string BuildType ;
@@ -1106,7 +1095,7 @@ struct Win32_OperatingSystem : WmiBase
 	std::string WindowsDirectory ;
 };
 
-struct Win32_VideoController : WmiBase
+struct Win32_VideoController
 {
 	Win32_VideoController() :
 		AcceleratorCapabilities(),AdapterCompatibility(),AdapterDACType(),AdapterRAM(),Availability(),
@@ -1185,7 +1174,7 @@ struct Win32_VideoController : WmiBase
 		result.extract(index, "VideoProcessor", (*this).VideoProcessor);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_VideoController";
 	}
@@ -1251,7 +1240,7 @@ struct Win32_VideoController : WmiBase
 	std::string   VideoProcessor;
 };
 
-struct Win32_BaseBoard : WmiBase
+struct Win32_BaseBoard
 {
 	Win32_BaseBoard() :
 		Caption(), ConfigOptions(), CreationClassName(), Depth(), Description(), Height(), HostingBoard(), HotSwappable(), InstallDate(),
@@ -1293,7 +1282,7 @@ struct Win32_BaseBoard : WmiBase
 		result.extract(index, "Width", (*this).Width);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "Win32_BaseBoard";
 	}
@@ -1329,7 +1318,7 @@ struct Win32_BaseBoard : WmiBase
 	int Width;
 }; //end class Win32_BaseBoard
 
-struct UWF_Filter : WmiBase
+struct UWF_Filter
 {
 	UWF_Filter() :
 		Id(), CurrentEnabled(), NextEnabled(), HORMEnabled(), ShutdownPending()
@@ -1346,11 +1335,11 @@ struct UWF_Filter : WmiBase
 		result.extract(index, "ShutdownPending", (*this).ShutdownPending);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "UWF_Filter";
 	}
-	static const std::string getWmiPath()
+	static std::string getWmiPath()
 	{
 		return "standardcimv2\\embedded";
 	}
@@ -1362,7 +1351,7 @@ struct UWF_Filter : WmiBase
 	bool ShutdownPending;
 }; //end class UWF_Filter
 
-struct AntiVirusProduct : WmiBase
+struct AntiVirusProduct
 {
 	AntiVirusProduct() :
 		DisplayName(), InstanceGuid(), PathToSignedProductExe(), PathToSignedReportingExe(), ProductState(), Timestamp()
@@ -1380,11 +1369,11 @@ struct AntiVirusProduct : WmiBase
 		result.extract(index, "Timestamp", (*this).Timestamp);
 	}
 
-	static const std::string getWmiClassName()
+	static std::string getWmiClassName()
 	{
 		return "AntiVirusProduct";
 	}
-	static const std::string getWmiPath()
+	static std::string getWmiPath()
 	{
 		return "securitycenter2";
 	}
