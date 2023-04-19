@@ -80,7 +80,7 @@ WMI classes, but it is also very easy to add more of them. All you need to do is
 		  * is not member of cimv2. In such a case, this function needs
 		  * to return the root for this WMI class
          **/
-        /*static std::string getWmiClassName()
+        /*static std::string getWmiPath()
         {
             return "not cimv2";
         }*/
