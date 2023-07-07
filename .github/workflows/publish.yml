@@ -14,13 +14,16 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
+      - uses: actions/checkout@v3    
       - uses: msys2/setup-msys2@v2
         with:
           msystem: mingw64
           update: true
           install: dos2unix mingw-w64-x86_64-gcc automake autoconf make git
       - name: CI-Build
-        run: ./win/mingw-build.sh
+        run: |
+          dos2unix PKGBUILD.mingw
+          makepkg BUILDDIR=/tmp/pkg -f -p PKGBUILD.mingw
       - uses: ncipollo/release-action@v1
         with:
           tag: 1.0
