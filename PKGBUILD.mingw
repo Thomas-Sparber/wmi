@@ -65,6 +65,11 @@ package() {
 
   install \
     -Dm755 \
+	  wmi.dll \
+	  ${pkgdir}${MINGW_PREFIX}/lib/wmi.dll
+
+  install \
+    -Dm755 \
 	  diaa_sami_comsupp.dll \
 	  ${pkgdir}${MINGW_PREFIX}/bin/iaa_sami_comsupp.dll
 
@@ -75,5 +80,9 @@ package() {
     -Dm755 \
     include/* \
     ${pkgdir}${MINGW_PREFIX}/include/wmi
+
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/lib
+  ar rcs ${pkgdir}${MINGW_PREFIX}/lib/wmi.static.a bin/wmi.o bin/wmiresult.o
+
 }
 
