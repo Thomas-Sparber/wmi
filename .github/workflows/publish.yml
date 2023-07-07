@@ -28,7 +28,9 @@ jobs:
         with:
           tag: 1.0
           artifacts: "*.pkg.tar.zst"
+          name: Latest
           allowUpdates: true
+          commit: true
           draft: false
           makeLatest: true
           omitBody: true
