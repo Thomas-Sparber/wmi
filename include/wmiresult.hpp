@@ -11,6 +11,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <cstdint> // Defines uint64_t
 
 namespace Wmi
 {
