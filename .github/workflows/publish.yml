@@ -23,6 +23,8 @@ jobs:
         run: |
           echo $PWD
           ls -l
+          cd ..
+          ls -l
           makepkg BUILDDIR=/tmp/pkg -f -p PKGBUILD.mingw
       - uses: ncipollo/release-action@v1
         with:
