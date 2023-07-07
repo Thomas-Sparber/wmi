@@ -20,12 +20,7 @@ jobs:
           update: true
           install: dos2unix mingw-w64-x86_64-gcc automake autoconf make git
       - name: CI-Build
-        run: |
-          echo $PWD
-          ls -l
-          cd ..
-          ls -l
-          makepkg BUILDDIR=/tmp/pkg -f -p PKGBUILD.mingw
+        run: ./win/mingw-build.sh
       - uses: ncipollo/release-action@v1
         with:
           tag: 1.0
