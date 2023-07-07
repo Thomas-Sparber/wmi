@@ -34,3 +34,27 @@ jobs:
           omitBody: true
           omitPrereleaseDuringUpdate: true
           replacesArtifacts: true
+  msvc-pack:
+    runs-on: windows-latest
+    name: Publish MSVC 64
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ilammy/msvc-dev-cmd@v1.4.1
+      - name: Build
+        run: |
+          cl /c /nologo /Ox /W3 /GL /MD /I".\include" /EHsc src/wmi.cpp src/wmiresult.cpp
+          lib /nologo /out:lib/wmi.lib wmi.obj wmiresult.obj
+          link /NOLOGO /DLL /LTCG /OUT:"lib/wmi.dll" /IMPLIB:lib/wmi.dll.lib wmi.obj wmiresult.obj ole32.lib oleaut32.lib wbemuuid.lib
+      - name: pack
+        run: 7z a msvc-wmi-x86_64.zip .\lib\*.lib .\include\*
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: "1.0"
+          artifacts: "*wmi*.zip"
+          allowUpdates: true
+          draft: false
+          makeLatest: true
+          omitBody: true
+          omitPrereleaseDuringUpdate: true
+          replacesArtifacts: true
+
