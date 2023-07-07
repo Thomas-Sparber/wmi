@@ -26,7 +26,6 @@ jobs:
           makepkg BUILDDIR=/tmp/pkg -f -p PKGBUILD.mingw
       - uses: ncipollo/release-action@v1
         with:
-          name: Latest
           tag: "1.0"
           artifacts: "*.pkg.tar.zst"
           allowUpdates: true
