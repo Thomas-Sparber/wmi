@@ -54,24 +54,26 @@ package() {
   cd $pkgname
 
   install \
-    -Dm755 \
-	wmi.dll \
-	${pkgdir}${MINGW_PREFIX}/lib/wmi.dll
-
-  install \
-    -Dm755 \
-	iaa_sami_comsupp.dll \
-	${pkgdir}${MINGW_PREFIX}/lib/iaa_sami_comsupp.dll
-
-  install \
-    -Dm644 \
-	* \
-	${pkgdir}${MINGW_PREFIX}/include/wmi
-
-  install \
     -Dm644 \
     "LICENSE" \
     ${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/LICENSE
     
+  install \
+    -Dm755 \
+	  wmi.dll \
+	  ${pkgdir}${MINGW_PREFIX}/bin/wmi.dll
+
+  install \
+    -Dm755 \
+	  diaa_sami_comsupp.dll \
+	  ${pkgdir}${MINGW_PREFIX}/bin/iaa_sami_comsupp.dll
+
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/include/wmi
+  chmod 755 ${pkgdir}${MINGW_PREFIX}/include/wmi
+
+  install \
+    -Dm755 \
+    include/* \
+    ${pkgdir}${MINGW_PREFIX}/include/wmi
 }
 
