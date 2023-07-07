@@ -43,8 +43,8 @@ jobs:
       - name: Build
         run: |
           cl /c /nologo /Ox /W3 /GL /MD /I".\include" /EHsc src/wmi.cpp src/wmiresult.cpp
+          mkdir lib
           lib /nologo /out:lib/wmi.lib wmi.obj wmiresult.obj
-          link /NOLOGO /DLL /LTCG /OUT:"lib/wmi.dll" /IMPLIB:lib/wmi.dll.lib wmi.obj wmiresult.obj ole32.lib oleaut32.lib wbemuuid.lib
       - name: pack
         run: 7z a msvc-wmi-x86_64.zip .\lib\*.lib .\include\*
       - uses: ncipollo/release-action@v1
