@@ -46,7 +46,7 @@ jobs:
           mkdir lib
           lib /nologo /out:lib/wmi.lib wmi.obj wmiresult.obj
       - name: pack
-        run: 7z a msvc-wmi-x86_64.zip .\lib\*.lib .\include\*
+        run: 7z a msvc-wmi-x86_64.zip .\lib .\include
       - uses: ncipollo/release-action@v1
         with:
           tag: "1.0"
