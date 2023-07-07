@@ -43,10 +43,13 @@ jobs:
       - name: Build
         run: |
           cl /c /nologo /Ox /W3 /GL /MD /I".\include" /EHsc src/wmi.cpp src/wmiresult.cpp
-          mkdir lib
-          lib /nologo /out:lib/wmi.lib wmi.obj wmiresult.obj
+          mkdir wmi
+          mkdir wmi\lib
+          lib /nologo /out:wmi/lib/wmi.lib wmi.obj wmiresult.obj
+          mkdir wmi\include
+          xcopy /Y /s include\* wmi\include
       - name: pack
-        run: 7z a msvc-wmi-x86_64.zip .\lib .\include
+        run: 7z a msvc-wmi-x86_64.zip .\wmi
       - uses: ncipollo/release-action@v1
         with:
           tag: "1.0"
