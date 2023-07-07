@@ -1,0 +1,77 @@
+# Maintainer: Perry Werneck <perry.werneck@gmail.com>
+# References: https://www.msys2.org/wiki/Creating-Packages/
+
+# Maintainer: Perry Werneck <perry.werneck@gmail.com>
+# References: https://www.msys2.org/wiki/Creating-Packages/
+
+# SPDX-License-Identifier: LGPL-3.0-or-later 
+
+# Copyright (C) 2023 Perry Werneck <perry.werneck@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+_realname=wmi++
+
+pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}
+source=()
+
+pkgver=1.0
+pkgrel=0
+pkgdesc="A very simple library written in C++ to execute WMI queries"
+url="https://github.com/Thomas-Sparber/wmi"
+arch=(i686 x86_64)
+license=(MIT)
+
+makedepends=(autoconf automake make libtool pkgconf gzip dos2unix ${MINGW_PACKAGE_PREFIX}-gcc)
+checkdepends=()
+
+provides=($pkgname) 
+conflicts=($pkgname)
+
+prepare() {
+  rm -fr "$srcdir/$pkgname"
+  ln -snf "$startdir" "$srcdir/$pkgname"
+}
+
+build() {
+  cd $pkgname
+  make all
+}
+
+package() {
+
+  cd $pkgname
+
+  install \
+    -Dm755 \
+	wmi.dll \
+	${pkgdir}${MINGW_PREFIX}/lib/wmi.dll
+
+  install \
+    -Dm755 \
+	iaa_sami_comsupp.dll \
+	${pkgdir}${MINGW_PREFIX}/lib/iaa_sami_comsupp.dll
+
+  install \
+    -Dm644 \
+	* \
+	${pkgdir}${MINGW_PREFIX}/include/wmi
+
+  install \
+    -Dm644 \
+    "LICENSE" \
+    ${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/LICENSE
+    
+}
+
