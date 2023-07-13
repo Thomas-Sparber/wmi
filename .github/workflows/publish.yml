@@ -1,5 +1,11 @@
 name: Publish
 on:
+  release:
+    types:
+      - published
+      - created
+      - edited
+      - deleted
   push:
     branches:
       - master
@@ -14,7 +20,12 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-      - uses: actions/checkout@v3    
+      - uses: actions/checkout@v3
+      - uses: oprypin/find-latest-tag@v1
+        id: gettag
+        with:
+          repository: Thomas-Sparber/wmi
+          releases-only: true
       - uses: msys2/setup-msys2@v2
         with:
           msystem: mingw64
@@ -26,7 +37,7 @@ jobs:
           makepkg BUILDDIR=/tmp/pkg -f -p PKGBUILD.mingw
       - uses: ncipollo/release-action@v1
         with:
-          tag: "1.0"
+          tag: ${{ steps.gettag.outputs.tag }}
           artifacts: "*.pkg.tar.zst"
           allowUpdates: true
           draft: false
@@ -39,6 +50,11 @@ jobs:
     name: Publish MSVC 64
     steps:
       - uses: actions/checkout@v3
+      - uses: oprypin/find-latest-tag@v1
+        id: gettag
+        with:
+          repository: Thomas-Sparber/wmi
+          releases-only: true
       - uses: ilammy/msvc-dev-cmd@v1.4.1
       - name: Build
         run: |
@@ -52,7 +68,7 @@ jobs:
         run: 7z a msvc-wmi-x86_64.zip .\wmi
       - uses: ncipollo/release-action@v1
         with:
-          tag: "1.0"
+          tag: ${{ steps.gettag.outputs.tag }}
           artifacts: "*wmi*.zip"
           allowUpdates: true
           draft: false
