@@ -6,9 +6,6 @@ on:
       - created
       - edited
       - deleted
-  pull_request:
-    branches:
-      - master   
 jobs:
   msys2-mingw64:
     name: Publish for MinGW 64
