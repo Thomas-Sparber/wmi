@@ -1,11 +1,8 @@
 name: Publish
 on:
-  release:
-    types:
-      - published
-      - created
-      - edited
-      - deleted
+  push:
+    tags:
+      - '*'
 jobs:
   msys2-mingw64:
     name: Publish for MinGW 64
