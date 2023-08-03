@@ -27,7 +27,7 @@ pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}
 source=()
 
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A very simple library written in C++ to execute WMI queries"
 url="https://github.com/Thomas-Sparber/wmi"
 arch=(i686 x86_64)
@@ -82,7 +82,11 @@ package() {
     ${pkgdir}${MINGW_PREFIX}/include/wmi
 
   mkdir -p ${pkgdir}${MINGW_PREFIX}/lib
-  ar rcs ${pkgdir}${MINGW_PREFIX}/lib/wmi.static.a bin/wmi.o bin/wmiresult.o
+  ar rcs \
+	${pkgdir}${MINGW_PREFIX}/lib/wmi.static.a \
+	bin/wmi.o \
+	bin/wmiresult.o \
+	diaa_sami_comsupp/bin/diaa_sami_comsupp.o
 
 }
 
